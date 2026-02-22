@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary-green: #66BB6A;
+    --color-priority-low: #64B5F6;
+    --color-priority-normal: #26A69A;
+    --color-priority-high: #FFCA28;
+    --color-priority-critical: #D84315;
+    --color-bg-login: #80CBC4;
+}
+
+@layer base {
+    body {
+        @apply font-sans;
+        background-color: #FAFAFA;
+        color: #263238;
+    }
+}
+
+.bgSidebar,
+.bgNavbar {
+    background-color: #090e19;
+    border-color: #313131a1;
+}
+
+.bgSidebar>div,
+.bgNavbar>div {
+    background-color: #090e19;
+    border-color: #313131a1;
+}
+
+.bgSidebar a,
+.bgSidebar h2,
+.bgNavbar p.text-sm,
+.bgSidebar button.cfg,
+.bgNavbar a,
+.main label,
+.main p.font-medium,
+.bgNavbar h3,
+.sub-main div>span.text-sm,
+.txtWhite {
+    color: #ffffffe0;
+}
+
+.bgSidebar a:hover,
+.bgNavbar .hoverable:hover,
+.bgSidebar button.cfg:hover,
+.bgNavbar a:hover {
+    color: #ffffffe0;
+    background-color: #1e2d1e;
+}
+
+.main {
+    background-color: #0f1627;
+}
+
+.sub-main {
+    background-color: #15223b;
+    border-color: #454545 !important;
+}
+
+.main div.border-gray-200 {
+    border-color: #585858;
+}
+
+/* Dashboard widgets dark mode */
+.dashboard-widget.sub-main {
+    background-color: #15223b !important;
+    border-color: #454545 !important;
+}
+
+/* Dark mode text contrast improvements for all widgets and cards */
+.sub-main h3,
+.sub-main h4,
+.sub-main .text-text,
+.dashboard-widget.sub-main h3,
+.dashboard-widget.sub-main h4,
+.dashboard-widget.sub-main .text-text {
+    color: #e2e8f0 !important;
+}
+
+.sub-main .text-gray-500,
+.dashboard-widget.sub-main .text-gray-500 {
+    color: #94a3b8 !important;
+}
+
+.sub-main .text-gray-400,
+.dashboard-widget.sub-main .text-gray-400 {
+    color: #94a3b8 !important;
+}
+
+.sub-main .text-gray-600 {
+    color: #cbd5e1 !important;
+}
+
+.sub-main .border-gray-100,
+.dashboard-widget.sub-main .border-gray-100 {
+    border-color: #454545 !important;
+}
+
+.sub-main .border-gray-200 {
+    border-color: #454545 !important;
+}
+
+/* Nested elements with borders */
+.sub-main>* .border-gray-100,
+.sub-main>* .border-gray-200,
+.sub-main>*>* .border-gray-100,
+.sub-main>*>* .border-gray-200 {
+    border-color: #454545 !important;
+}
+
+.sub-main button:hover,
+.dashboard-widget.sub-main button:hover {
+    background-color: #1e293b !important;
+}
+
+.sub-main .bg-gray-50 {
+    background-color: #1e293b !important;
+}
+
+.sub-main .bg-gray-100 {
+    background-color: #334155 !important;
+}
+
+/* Specific improvements for cards and panels */
+.sub-main .bg-white {
+    background-color: #15223b !important;
+    border-color: #454545 !important;
+}
+
+/* Hover border states */
+.sub-main .hover\:border-primary\/50:hover,
+.sub-main .hover\:border-gray-100:hover {
+    border-color: #66BB6A !important;
+}
+
+.sub-main .hover\:border-gray-300:hover {
+    border-color: #66BB6A !important;
+}
+
+/* Additional border rules for all views */
+.sub-main input,
+.sub-main textarea,
+.sub-main select {
+    border-color: #454545 !important;
+}
+
+/* Placeholder colors in dark mode */
+.sub-main input::placeholder,
+.sub-main textarea::placeholder {
+    color: #EEEEEE !important;
+}
+
+/* Text color for form inputs in dark mode */
+.sub-main input,
+.sub-main textarea,
+.sub-main select {
+    color: #FFF !important;
+}
+
+
+.sub-main table thead tr {
+    border-color: #454545 !important;
+}
+
+.sub-main table tbody tr {
+    border-color: #454545 !important;
+}
+
+.sub-main .border-t {
+    border-top-color: #454545 !important;
+}
+
+.sub-main .border-b {
+    border-bottom-color: #454545 !important;
+}
+
+.sub-main .border-l {
+    border-left-color: #454545 !important;
+}
+
+.sub-main .border-r {
+    border-right-color: #454545 !important;
+}
+
+/* Dashed borders (for drag and drop areas) */
+.sub-main .border-dashed {
+    border-color: #454545 !important;
+}
+
+.sub-main .border-dashed:hover {
+    border-color: #66BB6A !important;
+}
+
+/* Chat bubbles in Inbox - Dark mode */
+.sub-main .chat-bubble-received {
+    background-color: #bcd3ff !important;
+    color: #1e293b !important;
+    border-color: #bcd3ff !important;
+}
+
+/* Hover text colors in dark mode — keep light text */
+/* .sub-main button:hover *, */
+.sub-main .hover\:bg-gray-50:hover *,
+.sub-main .hover\:bg-gray-100:hover *,
+.sub-main [class*="hover:"]:hover .text-text,
+.sub-main [class*="hover:"]:hover .text-gray-500,
+.sub-main [class*="hover:"]:hover .text-gray-600,
+.sub-main [class*="hover:"]:hover .text-gray-700,
+.sub-main [class*="hover:"]:hover span,
+.sub-main [class*="hover:"]:hover h3,
+.sub-main [class*="hover:"]:hover h4,
+.sub-main [class*="hover:"]:hover p {
+    color: #f3f4f6 !important;
+}
+
+/* Specific hover states for list items and cards */
+.sub-main .cursor-pointer:hover .text-text,
+.sub-main .cursor-pointer:hover .text-gray-500,
+.sub-main .cursor-pointer:hover .text-gray-600,
+.sub-main .cursor-pointer:hover .text-gray-700 {
+    color: #f3f4f6 !important;
+}
+
+/* Exception: Dashboard widgets keep light text on hover */
+.dashboard-widget.sub-main button:hover *,
+.dashboard-widget.sub-main .hover\:bg-gray-50:hover *,
+.dashboard-widget.sub-main .hover\:bg-gray-100:hover *,
+.dashboard-widget.sub-main [class*="hover:"]:hover .text-text,
+.dashboard-widget.sub-main [class*="hover:"]:hover .text-gray-500,
+.dashboard-widget.sub-main [class*="hover:"]:hover .text-gray-600,
+.dashboard-widget.sub-main [class*="hover:"]:hover .text-gray-700,
+.dashboard-widget.sub-main [class*="hover:"]:hover span,
+.dashboard-widget.sub-main [class*="hover:"]:hover h3,
+.dashboard-widget.sub-main [class*="hover:"]:hover h4,
+.dashboard-widget.sub-main [class*="hover:"]:hover p,
+.dashboard-widget.sub-main .cursor-pointer:hover .text-text,
+.dashboard-widget.sub-main .cursor-pointer:hover .text-gray-500,
+.dashboard-widget.sub-main .cursor-pointer:hover .text-gray-600,
+.dashboard-widget.sub-main .cursor-pointer:hover .text-gray-700 {
+    color: #e2e8f0 !important;
+}
+
+.dashboard-widget.sub-main .cursor-pointer:hover .text-gray-400 {
+    color: #94a3b8 !important;
+}
