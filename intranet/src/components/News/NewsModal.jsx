@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import { X, Calendar, User, Tag } from 'lucide-react';
 import { ThemeContext } from '../../context/ThemeContext';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 const NewsModal = ({ isOpen, onClose, article }) => {
     const { theme } = useContext(ThemeContext);
+
+    useEscapeKey(onClose, isOpen && !!article);
 
     if (!isOpen || !article) return null;
 

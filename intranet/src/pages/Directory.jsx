@@ -5,6 +5,7 @@ import { Search, Mail, Phone, MapPin, X, Upload, Paperclip } from 'lucide-react'
 import { TitleView } from '../components/Layout/TitleView';
 import { ThemeContext } from '../context/ThemeContext';
 import { useChat } from '../context/ChatContext';
+import { useEscapeKey } from '../hooks/useEscapeKey';
 import clsx from 'clsx';
 
 const Directory = () => {
@@ -126,6 +127,8 @@ const Directory = () => {
       console.error('Error sending message:', error);
     }
   };
+
+  useEscapeKey(handleCloseMessageModal, isMessageModalOpen);
 
   return (
     <div className="space-y-6 transition-colors duration-200">

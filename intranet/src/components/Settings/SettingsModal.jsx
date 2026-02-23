@@ -2,9 +2,12 @@ import React from 'react';
 import { X, Moon, Sun, Monitor } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import clsx from 'clsx';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 const SettingsModal = ({ isOpen, onClose }) => {
     const { theme, isDarkMode, toggleTheme } = useTheme();
+
+    useEscapeKey(onClose, isOpen);
 
     if (!isOpen) return null;
 

@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import { X, FileText, Download, Plus } from 'lucide-react';
 import { ThemeContext } from '../../context/ThemeContext';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 const FolderModal = ({ folder, onClose }) => {
     const { theme } = useContext(ThemeContext);
+
+    useEscapeKey(onClose, !!folder);
 
     if (!folder) return null;
 

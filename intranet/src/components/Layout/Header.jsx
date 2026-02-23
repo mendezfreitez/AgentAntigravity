@@ -5,6 +5,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { useAuth } from '../../context/AuthContext';
 import SettingsModal from '../Settings/SettingsModal';
 import NotificationsModal from '../Common/NotificationsModal';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 const Header = ({ onMenuClick }) => {
     const { theme, toggleTheme, isDarkMode } = useTheme();
@@ -32,6 +33,9 @@ const Header = ({ onMenuClick }) => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
+    useEscapeKey(() => setIsMenuOpen(false), isMenuOpen);
+    useEscapeKey(() => setIsLogoutModalOpen(false), isLogoutModalOpen);
 
     const handleLogout = () => {
         logout();

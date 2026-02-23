@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { X, Image as ImageIcon } from 'lucide-react';
 import { ThemeContext } from '../../context/ThemeContext';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 const CreateNewsModal = ({ isOpen, onClose, onSubmit }) => {
     const [formData, setFormData] = useState({
@@ -12,6 +13,8 @@ const CreateNewsModal = ({ isOpen, onClose, onSubmit }) => {
         content: ''
     });
     const { theme } = useContext(ThemeContext);
+
+    useEscapeKey(onClose, isOpen);
 
     if (!isOpen) return null;
 

@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import { X, CheckCircle } from 'lucide-react';
 import { ThemeContext } from '../../context/ThemeContext';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 const NotificationsModal = ({ isOpen, onClose }) => {
     const { theme } = useContext(ThemeContext);
+
+    useEscapeKey(onClose, isOpen);
 
     // Mock data for pending tasks
     const pendingTasks = [

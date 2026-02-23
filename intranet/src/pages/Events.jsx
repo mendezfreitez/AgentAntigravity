@@ -18,6 +18,7 @@ import { es } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight, Plus, X, Clock, AlignLeft, AlertCircle, Pencil, Trash2, AlertTriangle } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
+import { useEscapeKey } from '../hooks/useEscapeKey';
 import clsx from 'clsx';
 
 const Events = () => {
@@ -102,6 +103,10 @@ const Events = () => {
             setIsDeleteModalOpen(false);
         }
     };
+
+    useEscapeKey(() => setIsDetailsModalOpen(false), isDetailsModalOpen);
+    useEscapeKey(() => setIsAddEventModalOpen(false), isAddEventModalOpen);
+    useEscapeKey(() => setIsDeleteModalOpen(false), isDeleteModalOpen);
 
     const getEventById = (id) => {
         return events.find(e => e.id === id);
