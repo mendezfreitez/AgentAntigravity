@@ -38,12 +38,12 @@ const NotificationsModal = ({ isOpen, onClose }) => {
 
                     <div className="space-y-3 mb-8">
                         {pendingTasks.map(task => (
-                            <div key={task.id} className="flex items-center justify-between p-4 bg-white hover:bg-gray-50 transition-colors rounded-xl border border-gray-100 shadow-sm group">
+                            <div key={task.id} className={`${theme.hover} flex items-center cursor-pointer justify-between p-4  transition-colors rounded-xl border border-gray-100 shadow-sm group`}>
                                 <div className="flex items-center gap-3">
                                     <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                                    <span className="text-gray-700 font-medium group-hover:text-blue-600 transition-colors">{task.text}</span>
+                                    <span className={`font-medium transition-colors ${theme.txtWhite}`}>{task.text}</span>
                                 </div>
-                                <span className="text-xs font-semibold text-gray-500 bg-gray-50 px-2 py-1 rounded-md border border-gray-100">{task.time}</span>
+                                <span className={`text-xs font-semibold bg-gray-50 px-2 py-1 rounded-md border border-gray-100 ${theme.txtWhite}`}>{task.time}</span>
                             </div>
                         ))}
                     </div>
