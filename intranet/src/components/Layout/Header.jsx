@@ -75,7 +75,7 @@ const Header = ({ onMenuClick }) => {
                                 <p className={`text-xs ${theme.textSubmain}`}>Product Designer</p>
                             </div>
 
-                            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold hover:bg-primary/30 transition-colors cursor-pointer mr-0">
+                            <div className={`w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold hover:bg-primary/30 transition-colors cursor-pointer mr-0 ${theme.bgPrimary} ${theme.textMain}`}>
                                 JD
                             </div>
                         </button>
@@ -93,7 +93,7 @@ const Header = ({ onMenuClick }) => {
                                         setIsNotificationsOpen(true);
                                         setIsMenuOpen(false);
                                     }}
-                                    className={`w-full text-left px-4 py-2 text-sm flex items-center gap-2 transition-colors ${theme.textMain} ${theme.hover}`}
+                                    className={`w-full text-left px-4 py-2 text-sm flex items-center gap-2 transition-colors cursor-pointer ${theme.textMain} ${theme.hover}`}
                                 >
                                     <Bell className={`w-4 h-4 ${theme.textSubmain}`} />
                                     Notificaciones
@@ -104,7 +104,7 @@ const Header = ({ onMenuClick }) => {
                                         setIsSettingsOpen(true);
                                         setIsMenuOpen(false);
                                     }}
-                                    className={`w-full text-left px-4 py-2 text-sm flex items-center gap-2 transition-colors ${theme.textMain} ${theme.hover}`}
+                                    className={`w-full text-left px-4 py-2 text-sm flex items-center gap-2 transition-colors cursor-pointer ${theme.textMain} ${theme.hover}`}
                                 >
                                     <Settings className={`w-4 h-4 ${theme.textSubmain}`} />
                                     Configuración
@@ -117,7 +117,7 @@ const Header = ({ onMenuClick }) => {
                                         setIsLogoutModalOpen(true);
                                         setIsMenuOpen(false);
                                     }}
-                                    className={`w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-500/10 flex items-center gap-2 transition-colors`}
+                                    className={`w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-500/10 cursor-pointer flex items-center gap-2 transition-colors`}
                                 >
                                     <LogOut className="w-4 h-4" />
                                     Cerrar Sesión
@@ -147,20 +147,20 @@ const Header = ({ onMenuClick }) => {
                             <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-500/20 mb-4">
                                 <LogOut className="h-6 w-6 text-red-500" />
                             </div>
-                            <h3 className={`text-lg font-medium mb-2 ${theme.textMain}`}>Confirmar Cierre de Sesión</h3>
+                            <h3 className={`text-lg font-medium mb-2 ${theme.textMain}`}>Cierre de sesión</h3>
                             <p className={`text-sm mb-6 ${theme.textSubmain}`}>
                                 ¿Estás seguro de que deseas cerrar sesión? Tendrás que iniciar sesión nuevamente para acceder.
                             </p>
                             <div className="flex gap-3 justify-center">
                                 <button
                                     onClick={() => setIsLogoutModalOpen(false)}
-                                    className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${theme.textMain} ${theme.hover} border ${theme.border}`}
+                                    className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors cursor-pointer ${theme.textMain} ${theme.hover} border ${theme.border}`}
                                 >
                                     Cancelar
                                 </button>
                                 <button
                                     onClick={handleLogout}
-                                    className="px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors shadow-sm"
+                                    className="px-4 py-2 text-sm cursor-pointer font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors shadow-sm"
                                 >
                                     Cerrar Sesión
                                 </button>
