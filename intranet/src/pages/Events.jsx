@@ -12,6 +12,7 @@ import {
     isSameDay,
     addMonths,
     subMonths,
+    addDays,
     isToday
 } from 'date-fns';
 import { es } from 'date-fns/locale';
@@ -54,7 +55,6 @@ const Events = () => {
             setCurrentDate(date);
             setSelectedDate(date);
             setIsDetailsModalOpen(true);
-            // Clear state to avoid reopening on refresh
             window.history.replaceState({}, document.title);
         }
     }, [location.state]);
@@ -70,7 +70,7 @@ const Events = () => {
     const calendarDays = eachDayOfInterval({ start: startDate, end: endDate });
 
     const handleDayClick = (day) => {
-        setSelectedDate(day);
+        setSelectedDate(day.toISOString().split('T')[0]);
         setIsDetailsModalOpen(true);
     };
 
@@ -141,9 +141,7 @@ const Events = () => {
         }
 
         try {
-            console.log(events.length);
             await axios.post(`http://localhost:3001/${editingEventId ? 'editar_evento' : 'nuevo_evento'}`, event);
-            console.log('Event sent to backend successfully');
         } catch (error) {
             console.error('Error sending event to backend:', error);
         }
@@ -154,7 +152,10 @@ const Events = () => {
     };
 
     const getEventsForDay = (day) => {
-        return events.filter(event => isSameDay(event.date, day));
+        const mismodia = events.filter(event => {
+            return isSameDay(event.date, new Date(day).toISOString().split('T')[0]);
+        });
+        return mismodia;
     };
 
     return (
@@ -245,7 +246,7 @@ const Events = () => {
                     <div className={`border rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-200 ${theme.subMain} ${theme.border}`}>
                         <div className={`p-4 border-b flex justify-between items-center ${theme.main} ${theme.border}`}>
                             <h3 className={`text-lg font-bold capitalize ${theme.textMain}`}>
-                                {format(selectedDate, 'EEEE, d MMMM', { locale: es })}
+                                {format(addDays(selectedDate, 1), 'EEEE, d MMMM', { locale: es })}
                             </h3>
                             <button
                                 onClick={() => setIsDetailsModalOpen(false)}
