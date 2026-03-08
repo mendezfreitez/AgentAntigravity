@@ -34,20 +34,20 @@ const Events = () => {
     const { theme } = useContext(ThemeContext);
 
     const priorities = {
-        Baja: { color: 'var(--color-priority-low)', label: 'Baja', value: 0 },
-        Normal: { color: 'var(--color-priority-normal)', label: 'Normal', value: 1 },
-        Alta: { color: 'var(--color-priority-high)', label: 'Alta', value: 2 },
-        Critica: { color: 'var(--color-priority-critical)', label: 'Crítica', value: 3 }
+        "0": { color: 'var(--color-priority-low)', label: 'Baja', value: 0 },
+        "1": { color: 'var(--color-priority-normal)', label: 'Normal', value: 1 },
+        "2": { color: 'var(--color-priority-high)', label: 'Alta', value: 2 },
+        "3": { color: 'var(--color-priority-critical)', label: 'Crítica', value: 3 }
     };
 
     // Mock events data
     const [events, setEvents] = useState([
-        { id: 1, title: 'Almuerzo de Equipo', date: new Date(2025, 10, 24), time: '12:30', description: 'Almuerzo mensual en la cafetería.', priority: 'Normal' },
-        { id: 2, title: 'Revisión de Proyecto', date: new Date(2025, 10, 25), time: '10:00', description: 'Revisión de hitos del Q4.', priority: 'Alta' },
-        { id: 3, title: 'Reunión General', date: new Date(2025, 10, 28), time: '16:00', description: 'Actualización de la empresa por el CEO.', priority: 'Critica' },
+        { id: 1, title: 'Almuerzo de Equipo', date: new Date(2025, 10, 24), time: '12:30', description: 'Almuerzo mensual en la cafetería.', priority: '0' },
+        { id: 2, title: 'Revisión de Proyecto', date: new Date(2025, 10, 25), time: '10:00', description: 'Revisión de hitos del Q4.', priority: '2' },
+        { id: 3, title: 'Reunión General', date: new Date(2025, 10, 28), time: '16:00', description: 'Actualización de la empresa por el CEO.', priority: '3' },
     ]);
 
-    const [newEvent, setNewEvent] = useState({ time: '', title: '', description: '', priority: 'Baja' });
+    const [newEvent, setNewEvent] = useState({ time: '', title: '', description: '', priority: '0' });
 
     useEffect(() => {
         if (location.state?.selectedDate) {
@@ -76,7 +76,7 @@ const Events = () => {
 
     const handleAddEventClick = () => {
         setEditingEventId(null);
-        setNewEvent({ time: '', title: '', description: '', priority: 'Baja' });
+        setNewEvent({ time: '', title: '', description: '', priority: '' });
         setIsAddEventModalOpen(true);
     };
 
@@ -135,7 +135,7 @@ const Events = () => {
                 date: selectedDate,
                 time: newEvent.time,
                 description: newEvent.description,
-                priority: newEvent.priority
+                priority: newEvent.priority || "0"
             };
             setEvents([...events, event]);
         }
