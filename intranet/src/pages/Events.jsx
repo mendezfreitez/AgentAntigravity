@@ -40,12 +40,31 @@ const Events = () => {
         "3": { color: 'var(--color-priority-critical)', label: 'Crítica', value: 3 }
     };
 
-    // Mock events data
-    const [events, setEvents] = useState([
-        { id: 1, title: 'Almuerzo de Equipo', date: new Date(2025, 10, 24), time: '12:30', description: 'Almuerzo mensual en la cafetería.', priority: '0' },
-        { id: 2, title: 'Revisión de Proyecto', date: new Date(2025, 10, 25), time: '10:00', description: 'Revisión de hitos del Q4.', priority: '2' },
-        { id: 3, title: 'Reunión General', date: new Date(2025, 10, 28), time: '16:00', description: 'Actualización de la empresa por el CEO.', priority: '3' },
-    ]);
+    const [events, setEvents] = useState([]);
+
+    // Fetch events from backend whenever the month changes
+    useEffect(() => {
+        const monthStart = startOfMonth(currentDate);
+        const monthEnd = endOfMonth(monthStart);
+        const rangeStart = startOfWeek(monthStart, { weekStartsOn: 1 });
+        const rangeEnd = endOfWeek(monthEnd, { weekStartsOn: 1 });
+
+        const startStr = format(rangeStart, 'yyyy-MM-dd');
+        const endStr = format(rangeEnd, 'yyyy-MM-dd');
+
+        axios.get(`http://localhost:3001/eventos?start=${startStr}&end=${endStr}`)
+            .then(res => {
+                // Normalize dates from DB (strings) to Date objects and priority to string
+                const normalized = res.data.map(e => ({
+                    ...e,
+                    id: Number(e.id),
+                    date: new Date(e.date),
+                    priority: String(e.priority ?? 0)
+                }));
+                setEvents(normalized);
+            })
+            .catch(err => console.error('Error al cargar eventos:', err));
+    }, [currentDate]);
 
     const [newEvent, setNewEvent] = useState({ time: '', title: '', description: '', priority: '0' });
 
@@ -152,8 +171,10 @@ const Events = () => {
     };
 
     const getEventsForDay = (day) => {
+        const formattedDay = typeof day === "object" ? format(day, 'yyyy-MM-dd') : day;
         const mismodia = events.filter(event => {
-            return isSameDay(event.date, new Date(day).toISOString().split('T')[0]);
+            const formattedDayEvent = typeof event.date === "object" ? format(event.date, 'yyyy-MM-dd') : event.date;
+            return isSameDay(formattedDayEvent, formattedDay);
         });
         return mismodia;
     };

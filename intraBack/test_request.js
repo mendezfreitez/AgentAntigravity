@@ -1,15 +1,17 @@
 const http = require('http');
 
 const data = JSON.stringify({
-    source: 'Verification Script',
-    message: 'Hello Backend!',
-    timestamp: new Date().toISOString()
+    title: 'Evento de Prueba',
+    date: '2026-03-10',
+    time: '14:00',
+    description: 'Descripcion de prueba para verificar la BD',
+    priority: 1
 });
 
 const options = {
     hostname: 'localhost',
     port: 3001,
-    path: '/api/log',
+    path: '/nuevo_evento',
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -24,14 +26,13 @@ const req = http.request(options, (res) => {
         console.log(`BODY: ${chunk}`);
     });
     res.on('end', () => {
-        console.log('No more data in response.');
+        console.log('Listo.');
     });
 });
 
 req.on('error', (e) => {
-    console.error(`problem with request: ${e.message}`);
+    console.error(`Error: ${e.message}`);
 });
 
-// Write data to request body
 req.write(data);
 req.end();
