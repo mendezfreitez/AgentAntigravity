@@ -8,5 +8,10 @@ export default {
     theme: {
         extend: {},
     },
-    plugins: [],
+    plugins: [
+        plugin(function ({ addVariant }) {
+            addVariant("theme-dark", '[data-theme="dark"] &')
+            addVariant("theme-light", '[data-theme="light"] &')
+        })
+    ]
 }

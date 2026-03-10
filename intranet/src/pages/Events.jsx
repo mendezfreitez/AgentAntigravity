@@ -115,11 +115,16 @@ const Events = () => {
         setIsDeleteModalOpen(true);
     };
 
-    const confirmDeleteEvent = () => {
+    const confirmDeleteEvent = async () => {
         if (eventToDelete) {
-            setEvents(events.filter(e => e.id !== eventToDelete.id));
-            setEventToDelete(null);
-            setIsDeleteModalOpen(false);
+            try {
+                await axios.post('http://localhost:3001/eliminar_evento', { id: eventToDelete.id });
+                setEvents(events.filter(e => e.id !== eventToDelete.id));
+                setEventToDelete(null);
+                setIsDeleteModalOpen(false);
+            } catch (error) {
+                console.error('Error al eliminar evento:', error);
+            }
         }
     };
 
@@ -136,38 +141,41 @@ const Events = () => {
         if (!newEvent.title || !newEvent.time) return;
 
         if (editingEventId) {
-            event = getEventById(editingEventId);
-
+            event = { ...getEventById(editingEventId) };
             event.title = newEvent.title;
             event.time = newEvent.time;
             event.description = newEvent.description;
             event.priority = newEvent.priority;
-
-            setEvents(events.map(e => e.id === editingEventId ?
-                event
-                : e
-            ));
         } else {
             event = {
-                id: events.length + 1,
+                // If it's a new event, we don't send an ID so DB creates one
                 title: newEvent.title,
                 date: selectedDate,
                 time: newEvent.time,
                 description: newEvent.description,
                 priority: newEvent.priority || "0"
             };
-            setEvents([...events, event]);
         }
 
         try {
-            await axios.post(`http://localhost:3001/${editingEventId ? 'editar_evento' : 'nuevo_evento'}`, event);
+            const endpoint = editingEventId ? 'editar_evento' : 'nuevo_evento';
+            const response = await axios.post(`http://localhost:3001/${endpoint}`, event);
+
+            if (editingEventId) {
+                setEvents(events.map(e => e.id === editingEventId ? event : e));
+            } else {
+                // Incorporate the DB generated ID
+                event.id = response.data.insertId;
+                setEvents([...events, event]);
+            }
+
+            setIsAddEventModalOpen(false);
+            setNewEvent({ time: '', title: '', description: '', priority: 'Baja' });
+            setEditingEventId(null);
+
         } catch (error) {
             console.error('Error sending event to backend:', error);
         }
-
-        setIsAddEventModalOpen(false);
-        setNewEvent({ time: '', title: '', description: '', priority: 'Baja' });
-        setEditingEventId(null);
     };
 
     const getEventsForDay = (day) => {
@@ -246,7 +254,7 @@ const Events = () => {
                                                 color: '#263238'
                                             }}
                                         >
-                                            {event.time} {event.title}
+                                            {event.time.slice(0, 5)} {event.title}
                                         </div>
                                     ))}
                                     {dayEvents.length > 3 && (
@@ -290,13 +298,14 @@ const Events = () => {
                                                 <h4 className={`font-bold ${theme.textMain}`}>{event.title}</h4>
                                                 <div className="flex items-center gap-2">
                                                     <span
-                                                        className="text-[10px] font-bold px-2 py-0.5 rounded-full text-white"
+                                                        data-theme="dark"
+                                                        className={`text-[10px] font-bold px-2 py-0.5 rounded-full`}
                                                         style={{ backgroundColor: priorities[event.priority]?.color || priorities.Baja.color }}
                                                     >
                                                         {priorities[event.priority]?.label}
                                                     </span>
-                                                    <span className={`text-xs font-medium border px-2 py-0.5 rounded-full ${theme.textSubmain} ${theme.main} ${theme.border}`}>
-                                                        {event.time}
+                                                    <span className={`text-xs font-medium border px-2 py-0.5 rounded-full ${theme.textSubmain} ${theme.main} ${theme.border} `}>
+                                                        {event.time.slice(0, 5)}
                                                     </span>
                                                 </div>
                                             </div>

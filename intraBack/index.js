@@ -49,9 +49,6 @@ app.get('/eventos', async (req, res) => {
 app.post('/nuevo_evento', async (req, res) => {
     const { title, date, time, description, priority, creator_id } = req.body;
 
-    console.log('--- Nuevo evento recibido ---');
-    console.log(req.body);
-
     let conn;
     try {
         conn = await pool.getConnection();
@@ -70,12 +67,55 @@ app.post('/nuevo_evento', async (req, res) => {
     }
 });
 
-// Endpoint for creating a new event
-app.post('/editar_evento', (req, res) => {
-    console.log('--- Evento editado ---');
-    console.log(req.body);
-    console.log('-------------------------------');
-    res.json({ message: 'Event created successfully', data: req.body });
+
+// Endpoint para editar un evento
+app.post('/editar_evento', async (req, res) => {
+    const { id, title, time, description, priority } = req.body;
+
+    if (!id) return res.status(400).json({ message: 'Se requiere el id del evento' });
+
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        const result = await conn.query(
+            'UPDATE events SET title = ?, time = ?, description = ?, priority = ? WHERE id = ?',
+            [title, time, description, priority, id]
+        );
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Evento no encontrado' });
+        }
+
+        console.log(`Evento con ID ${id} actualizado en la BD`);
+        res.json({ message: 'Event updated successfully', id });
+    } catch (err) {
+        console.error('Error al actualizar evento:', err);
+        res.status(500).json({ message: 'Error updating event', error: err.message });
+    } finally {
+        if (conn) conn.release();
+    }
+});
+
+// Endpoint para eliminar un evento por ID
+app.post('/eliminar_evento', async (req, res) => {
+    const { id } = req.body;
+    if (!id) return res.status(400).json({ message: 'Se requiere el id del evento' });
+
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        const result = await conn.query('DELETE FROM events WHERE id = ?', [id]);
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Evento no encontrado' });
+        }
+        console.log(`Evento con ID ${id} eliminado de la BD`);
+        res.json({ message: 'Event deleted successfully', id });
+    } catch (err) {
+        console.error('Error al eliminar evento:', err);
+        res.status(500).json({ message: 'Error deleting event', error: err.message });
+    } finally {
+        if (conn) conn.release();
+    }
 });
 
 // Endpoint for sending a new message

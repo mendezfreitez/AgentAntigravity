@@ -7,6 +7,26 @@
     --color-priority-high: #FFCA28;
     --color-priority-critical: #D84315;
     --color-bg-login: #80CBC4;
+    --color-dark: #212121;
+}
+
+/* tema dark */
+[data-theme="dark"] {
+    --color-primary-green: #d11b1b;
+    --color-primary: #090e19;
+    --color-secondary: #0f1627;
+    --color-tertiary: #15223b;
+
+    --color-text-primary: #f3f4f6;
+    --color-text-secondary: #e2e8f0;
+    --color-text-tertiary: #cbd5e1;
+}
+
+/* tema corporate */
+[data-theme="corporate"] {
+    --color-primary-green: #2E7D32;
+    --color-bg-login: #E0F2F1;
+    --color-dark: #1B5E20;
 }
 
 @layer base {
