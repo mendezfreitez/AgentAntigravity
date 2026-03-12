@@ -13,18 +13,18 @@ const QuickActions = () => {
     ];
 
     return (
-        <div className={`rounded-xl shadow-sm p-6 border transition-colors duration-200 ${theme.subMain} ${theme.border}`}>
-            <h3 className={`text-lg font-bold mb-4 ${theme.textMain}`}>Accesos Rápidos</h3>
+        <div className={`rounded-xl shadow-sm p-6 border border-text-primary/10 transition-colors duration-200 bg-primary`}>
+            <h3 className={`text-lg font-bold mb-4 text-text-primary`}>Accesos Rápidos</h3>
             <div className="grid grid-cols-2 gap-4">
                 {actions.map((action, index) => (
                     <button
                         key={index}
-                        className={`flex flex-col border-gray-200 cursor-pointer rounded-2xl items-center justify-center p-4 transition-colors border ${theme.hover} hover:${theme.border}`}
+                        className={`flex flex-col cursor-pointer rounded-2xl items-center justify-center p-4 transition-colors border border-text-primary/10 text-text-primary bg-tertiary/10 hover:bg-tertiary`}
                     >
-                        <div className={`p-3 rounded-full mb-3 ${action.color}`}>
+                        <div className={`p-3 rounded-full mb-3 bg-primary-green/80`}>
                             <action.icon className="w-6 h-6" />
                         </div>
-                        <span className={`text-sm font-medium ${theme.textMain}`}>{action.label}</span>
+                        <span className={`text-sm font-medium`}>{action.label}</span>
                     </button>
                 ))}
             </div>

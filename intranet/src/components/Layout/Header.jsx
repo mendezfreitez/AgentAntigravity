@@ -45,7 +45,7 @@ const Header = ({ onMenuClick }) => {
 
     return (
         <>
-            <header className={`h-16 flex items-center justify-end px-4 relative z-20 transition-colors duration-200 ${theme.navbar}`}>
+            <header className={`h-[65px] flex items-center justify-end px-4 relative z-20 transition-colors duration-200 bg-primary border-b border-border`}>
                 <div className="flex items-center space-x-2 transition-colors duration-200">
                     {/* Theme Toggle Button */}
                     <button
@@ -75,11 +75,11 @@ const Header = ({ onMenuClick }) => {
                             className="relative focus:outline-none me-0 flex flex-row items-center cursor-pointer"
                         >
                             <div className="text-right hidden md:block me-2">
-                                <p className={`text-sm font-medium ${theme.textMain}`}>Jane Doe</p>
-                                <p className={`text-xs ${theme.textSubmain}`}>Product Designer</p>
+                                <p className={`text-sm font-medium text-text-primary`}>Jane Doe</p>
+                                <p className={`text-xs text-text-secondary`}>Product Designer</p>
                             </div>
 
-                            <div className={`w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold hover:bg-primary/30 transition-colors cursor-pointer mr-0 ${theme.bgPrimary} ${theme.textMain}`}>
+                            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-primary font-bold hover:bg-primary-green/50 transition-colors cursor-pointer mr-0 bg-primary-green/80 text-text-primary`}>
                                 JD
                             </div>
                         </button>

@@ -5,8 +5,8 @@ export const TitleView = ({ title, subtitle }) => {
     const { theme } = useContext(ThemeContext);
     return (
         <div>
-            <h1 className={`text-2xl font-bold ${theme.textMain}`}>{title}</h1>
-            <p className={theme.textSubmain}>{subtitle}</p>
+            <h1 className="text-2xl font-bold text-text-primary">{title}</h1>
+            <p className="text-text-tertiary">{subtitle}</p>
         </div>
     );
 };

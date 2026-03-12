@@ -54,9 +54,9 @@ const NewsFeed = () => {
 
     return (
         <>
-            <div className={`rounded-xl shadow-sm p-6 border transition-colors duration-200 ${theme.subMain} ${theme.border}`}>
+            <div className={`rounded-xl shadow-sm p-6 border border-text-primary/10 transition-colors duration-200 bg-primary/50`}>
                 <div className="flex justify-between items-center mb-4">
-                    <h3 className={`text-lg font-bold ${theme.textMain}`}>Últimas Noticias</h3>
+                    <h3 className={`text-lg font-bold text-text-primary`}>Últimas Noticias</h3>
                     <Link to="/news" className="text-primary-green text-sm font-medium flex items-center hover:underline">
                         Ver Todo <ArrowRight className="w-4 h-4 ml-1" />
                     </Link>
@@ -66,7 +66,7 @@ const NewsFeed = () => {
                         <div
                             key={item.id}
                             onClick={() => handleArticleClick(item)}
-                            className={`flex gap-4 group cursor-pointer p-2 border border-gray-200 rounded-2xl transition-colors ${theme.hover}`}
+                            className={`flex gap-4 group cursor-pointer p-2 border border-text-primary/10 rounded-2xl transition-colors bg-tertiary/10 hover:bg-tertiary text-text-primary`}
                         >
                             <img
                                 src={item.image}
@@ -77,10 +77,10 @@ const NewsFeed = () => {
                                 <span className="text-xs font-semibold text-primary-green bg-primary-green/10 px-2 py-0.5 rounded-full">
                                     {item.category}
                                 </span>
-                                <h4 className={`text-sm font-bold mt-1 group-hover:text-primary-green transition-colors line-clamp-2 ${theme.textMain}`}>
+                                <h4 className={`text-sm font-bold mt-1 group-hover:text-primary-green transition-colors line-clamp-2`}>
                                     {item.title}
                                 </h4>
-                                <p className={`text-xs mt-1 ${theme.textSubmain}`}>{item.date}</p>
+                                <p className={`text-xs mt-1 text-text-tertiary`}>{item.date}</p>
                             </div>
                         </div>
                     ))}

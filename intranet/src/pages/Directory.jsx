@@ -139,13 +139,13 @@ const Directory = () => {
         </button>
       </div>
 
-      <div className={`p-4 rounded-xl shadow-sm border flex flex-col sm:flex-row gap-4 transition-colors duration-200 ${theme.subMain} ${theme.border}`}>
+      <div className={`p-4 rounded-xl shadow-sm flex flex-col sm:flex-row gap-4 transition-colors duration-200 bg-primary/50 border border-text-primary/10`}>
         <div className="relative flex-1">
           <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 ${theme.textSubmain}`} />
           <input
             type="text"
             placeholder="Buscar por nombre o rol..."
-            className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green/50 transition-colors ${theme.input}`}
+            className={`w-full pl-10 pr-4 py-2 rounded-lg focus:outline-none focus:ring-0 transition-colors bg-tertiary border border-text-primary/10 text-text-tertiary`}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -163,7 +163,7 @@ const Directory = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredEmployees.map((employee) => (
-          <div key={employee.id} className={`rounded-xl shadow-sm border p-3 hover:shadow-md transition-shadow ${theme.subMain} ${theme.border}`}>
+          <div key={employee.id} className="rounded-xl shadow-sm p-3 hover:shadow-md transition-shadow bg-tertiary border border-text-primary/10">
             <div className="flex items-start justify-between mb-2">
               <div className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold ${theme.main} ${theme.textSubmain}`}>
                 {employee.name.split(' ').map(n => n[0]).join('')}
@@ -174,7 +174,7 @@ const Directory = () => {
             </div>
             <div className='flex flex-row justify-between'>
               <div className='w-[1/2]'>
-                <h3 className={`text-lg font-bold ${theme.textMain}`}>{employee.name}</h3>
+                <h3 className="text-lg font-bold text-text-secondary">{employee.name}</h3>
                 <p className="text-primary-green font-medium text-sm mb-4">{employee.role}</p>
               </div>
               <div className={`space-y-1 text-sm ${theme.textSubmain} w-[1/2]`}>
@@ -189,15 +189,15 @@ const Directory = () => {
               </div>
             </div>
 
-            <div className={`mt-2 pt-4 border-t flex gap-2 ${theme.border}`}>
+            <div className="mt-2 pt-4 border-t flex gap-2">
+              <button className={`flex-1 py-2 text-sm font-medium cursor-pointer rounded-lg hover:bg-secondary/10 transition-colors border border-text-primary/10 bg-secondary text-text-tertiary`}>
+                Ver Perfil
+              </button>
               <button
                 onClick={() => handleOpenMessageModal(employee)}
-                className="flex-1 py-2 text-sm font-medium text-primary-green bg-primary-green/10 rounded-lg hover:bg-primary-green/20 transition-colors"
+                className="flex-1 py-2 text-sm font-medium cursor-pointer rounded-lg text-text-primary bg-button-primary/70 border border-primary-green/30 hover:bg-button-primary/80 transition-colors"
               >
                 Mensaje
-              </button>
-              <button className={`flex-1 py-2 text-sm font-medium rounded-lg hover:brightness-95 transition-colors border ${theme.main} ${theme.textMain} ${theme.border}`}>
-                Ver Perfil
               </button>
             </div>
           </div>

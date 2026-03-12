@@ -28,10 +28,10 @@ const Sidebar = ({ isOpen, onClose }) => {
 
             {/* Sidebar */}
             <aside className={clsx(
-                `fixed inset-y-0 left-0 z-30 w-64 transform transition-all duration-200 ease-in-out lg:translate-x-0 lg:static lg:inset-auto ${theme.sidebar}`,
+                `fixed inset-y-0 left-0 z-30 w-64 transform transition-all duration-200 ease-in-out lg:translate-x-0 lg:static lg:inset-auto bg-primary border-1 border-border`,
                 isOpen ? "translate-x-0" : "-translate-x-full"
             )}>
-                <div className={`flex items-center justify-center h-16 border-b ${theme.border} ${theme.sidebar}`}>
+                <div className={`flex items-center justify-center h-16 border-b border-border bg-primary`}>
                     <span className="text-2xl font-bold text-primary-green">Intranet</span>
                 </div>
 
@@ -41,10 +41,10 @@ const Sidebar = ({ isOpen, onClose }) => {
                             key={item.path}
                             to={item.path}
                             className={({ isActive }) => clsx(
-                                `flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${theme.textMain} ${theme.hover}`,
+                                `flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors`,
                                 isActive
                                     ? "bg-primary-green/10 text-primary-green"
-                                    : ""
+                                    : "text-text-primary hover:bg-text-tertiary/10"
                             )}
                         >
                             <item.icon className="w-5 h-5 mr-3" />
