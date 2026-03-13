@@ -192,25 +192,25 @@ const Events = () => {
             {/* Header */}
             <div className="flex justify-between items-center mb-6">
                 <TitleView title="Eventos" subtitle="Calendario de actividades y reuniones" />
-                <div className={`flex items-center space-x-4 rounded-lg shadow-sm border p-1 transition-colors duration-200 ${theme.subMain} ${theme.border}`}>
-                    <button onClick={prevMonth} className={`p-2 rounded-md transition-colors ${theme.hover}`}>
-                        <ChevronLeft className={`w-5 h-5 ${theme.textSubmain}`} />
+                <div className="flex items-center space-x-4 rounded-lg shadow-sm p-1 transition-colors duration-200 bg-button-primary border border-text-primary/10">
+                    <button onClick={prevMonth} className="p-2 rounded-md cursor-pointer transition-colors hover:bg-tertiary/20">
+                        <ChevronLeft className="w-5 h-5 text-primary" />
                     </button>
-                    <span className={`text-lg font-bold w-40 text-center capitalize ${theme.textMain}`}>
+                    <span className="text-lg font-bold w-40 text-center capitalize text-primary">
                         {format(currentDate, 'MMMM yyyy', { locale: es })}
                     </span>
-                    <button onClick={nextMonth} className={`p-2 rounded-md transition-colors ${theme.hover}`}>
-                        <ChevronRight className={`w-5 h-5 ${theme.textSubmain}`} />
+                    <button onClick={nextMonth} className="p-2 rounded-md cursor-pointer transition-colors hover:bg-tertiary/20">
+                        <ChevronRight className="w-5 h-5 text-primary" />
                     </button>
                 </div>
             </div>
 
             {/* Calendar Grid */}
-            <div className={`flex-1 rounded-xl shadow-sm border flex flex-col overflow-hidden transition-colors duration-200 ${theme.subMain} ${theme.border}`}>
+            <div className="flex-1 rounded-xl shadow-sm flex flex-col overflow-hidden transition-colors duration-200  border border-text-primary/10">
                 {/* Weekdays Header */}
-                <div className={`grid grid-cols-7 border-b transition-colors duration-200 ${theme.main} ${theme.border}`}>
+                <div className={`grid grid-cols-7 border-b transition-colors duration-200  border-text-primary/10`}>
                     {['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'].map(day => (
-                        <div key={day} className={`py-3 text-center text-sm font-semibold uppercase tracking-wider ${theme.textSubmain}`}>
+                        <div key={day} className={`py-3 text-center text-sm font-semibold uppercase tracking-wider bg-primary text-text-primary`}>
                             {day}
                         </div>
                     ))}
@@ -225,15 +225,15 @@ const Events = () => {
                                 key={day.toString()}
                                 onClick={() => handleDayClick(day)}
                                 className={clsx(
-                                    `border-b border-r p-1 cursor-pointer transition-colors relative group h-[1/5] ${theme.border} ${theme.hover}`,
-                                    !isSameMonth(day, monthStart) && "opacity-50",
-                                    isToday(day) && "bg-primary-green/5"
+                                    `border-b border-r p-1 cursor-pointer transition-colors relative group h-[1/5] border-text-primary/10`,
+                                    !isSameMonth(day, monthStart) ? "bg-tertiary" : "bg-secondary",
+                                    isToday(day) && "bg-primary-green/"
                                 )}
                             >
                                 <div className="flex justify-between items-start">
                                     <span className={clsx(
                                         "text-sm font-medium w-7 h-7 flex items-center justify-center rounded-full",
-                                        isToday(day) ? "bg-primary-green text-white" : theme.textMain
+                                        isToday(day) ? "bg-button-primary text-primary" : "text-text-primary"
                                     )}>
                                         {format(day, 'd')}
                                     </span>

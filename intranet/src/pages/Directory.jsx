@@ -165,7 +165,7 @@ const Directory = () => {
         {filteredEmployees.map((employee) => (
           <div key={employee.id} className="rounded-xl shadow-sm p-3 hover:shadow-md transition-shadow bg-tertiary border border-text-primary/10">
             <div className="flex items-start justify-between mb-2">
-              <div className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold ${theme.main} ${theme.textSubmain}`}>
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold bg-primary-green/60 text-text-primary`}>
                 {employee.name.split(' ').map(n => n[0]).join('')}
               </div>
               <span className={`px-2 py-1 text-xs font-medium rounded-full ${theme.bgPrimary} ${theme.textMain}`}>
