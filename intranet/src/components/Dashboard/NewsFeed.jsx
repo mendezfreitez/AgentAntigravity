@@ -16,7 +16,7 @@ const NewsFeed = () => {
             excerpt: 'Conoce los puntos clave discutidos en nuestra última reunión trimestral y los objetivos para el próximo período.',
             category: 'Compañía',
             date: 'hace 2 horas',
-            author: 'María González',
+            author: 'Oscary González',
             image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=200&h=150',
             content: 'En la reunión trimestral de hoy, discutimos los logros del último trimestre y establecimos nuevas metas para el próximo período. Los resultados han superado nuestras expectativas y el equipo ha demostrado un compromiso excepcional.'
         },

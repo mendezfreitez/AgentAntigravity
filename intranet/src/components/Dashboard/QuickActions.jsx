@@ -1,9 +1,6 @@
-import React, { useContext } from 'react';
 import { CalendarPlus, FilePlus, Plane, HelpCircle } from 'lucide-react';
-import { ThemeContext } from '../../context/ThemeContext';
 
 const QuickActions = () => {
-    const { theme } = useContext(ThemeContext);
 
     const actions = [
         { icon: CalendarPlus, label: 'Reservar Sala', color: 'bg-blue-100/20 text-blue-500' },

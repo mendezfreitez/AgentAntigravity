@@ -72,17 +72,17 @@ const Inbox = () => {
     };
 
     return (
-        <div className={`h-[calc(100vh-8rem)] rounded-xl shadow-sm border overflow-hidden flex transition-colors duration-200 ${theme.subMain} ${theme.border}`}>
+        <div className="h-[calc(100vh-8rem)] rounded-xl shadow-sm overflow-hidden flex transition-colors duration-200 border border-text-primary/10">
             {/* Sidebar List */}
-            <div className={`w-80 border-r flex flex-col ${theme.subMain} ${theme.border}`}>
-                <div className={`p-4 border-b ${theme.main} ${theme.border}`}>
-                    <h2 className={`text-xl font-bold mb-4 ${theme.textMain}`}>Bandeja de Entrada</h2>
+            <div className={`w-80 border-r flex flex-col bg-primary border-text-primary/10`}>
+                <div className={`p-4 border-b bg-primary border-text-primary/10`}>
+                    <h2 className={`text-xl font-bold mb-4 text-text-primary`}>Bandeja de Entrada</h2>
                     <div className="relative">
-                        <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${theme.textSubmain}`} />
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-text-tertiary" />
                         <input
                             type="text"
                             placeholder="Buscar mensajes..."
-                            className={`w-full pl-9 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green/50 text-sm transition-colors ${theme.input}`}
+                            className={`w-full pl-9 pr-4 py-2 rounded-lg focus:outline-none focus:ring-0 transition-colors bg-tertiary border border-text-primary/10 text-text-tertiary`}
                         />
                     </div>
                 </div>
@@ -93,8 +93,8 @@ const Inbox = () => {
                             key={chat.id}
                             onClick={() => setSelectedChat(chat.id)}
                             className={clsx(
-                                `p-4 border-b cursor-pointer transition-colors ${theme.border} ${theme.hover}`,
-                                selectedChat === chat.id && "bg-primary-green/5 border-l-4 border-l-primary-green"
+                                `p-4 border-b border-text-primary/10 cursor-pointer transition-colors  hover:bg-tertiary/50`,
+                                selectedChat === chat.id && "bg-tertiary border-l-4 border-l-primary-green"
                             )}
                         >
                             <div className="flex justify-between items-start mb-1">
@@ -106,16 +106,16 @@ const Inbox = () => {
                                         )}
                                     </div>
                                     <div className="ml-3">
-                                        <h4 className={clsx("text-sm font-bold", chat.unread > 0 ? theme.textMain : theme.textSubmain)}>
+                                        <h4 className={clsx("text-sm font-bold text-text-primary")}>
                                             {chat.name}
                                         </h4>
-                                        <p className={`text-xs opacity-80 ${theme.textSubmain}`}>{chat.email}</p>
+                                        <p className={`text-xs opacity-80 text-text-primary`}>{chat.email}</p>
                                     </div>
                                 </div>
-                                <span className={`text-xs ${theme.textSubmain}`}>{chat.time}</span>
+                                <span className={`text-xs text-text-secondary`}>{chat.time}</span>
                             </div>
                             <div className="flex justify-between items-center mt-2 pl-12">
-                                <p className={clsx("text-sm truncate w-48", chat.unread > 0 ? `font-bold ${theme.textMain}` : theme.textSubmain)}>
+                                <p className={clsx("text-sm truncate w-48", chat.unread > 0 ? `font-bold text-text-primary` : 'text-text-tertiary')}>
                                     {chat.lastMessage}
                                 </p>
                                 {chat.unread > 0 && (
@@ -130,27 +130,27 @@ const Inbox = () => {
             </div>
 
             {/* Chat Area */}
-            <div className={`flex-1 flex flex-col ${theme.subMain2}`}>
+            <div className={`flex-1 flex flex-col bg-secondary`}>
                 {/* Chat Header */}
-                <div className={`p-4 border-b flex justify-between items-center ${theme.subMain} ${theme.border}`}>
+                <div className="p-4 border-b border-text-primary/10 flex justify-between items-center bg-primary">
                     <div className="flex items-center">
                         <div className={`w-10 h-10 rounded-full border flex items-center justify-center font-bold mr-3 ${theme.main} ${theme.textSubmain} ${theme.border}`}>
                             {currentChat.avatar}
                         </div>
                         <div>
-                            <h3 className={`font-bold ${theme.textMain}`}>{currentChat.name}</h3>
-                            <p className={`text-xs ${theme.textSubmain}`}>{currentChat.email}</p>
+                            <h3 className={`font-bold text-text-primary`}>{currentChat.name}</h3>
+                            <p className={`text-xs text-text-tertiary`}>{currentChat.email}</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-2">
-                        <button className={`p-2 rounded-full transition-colors ${theme.hover} ${theme.textSubmain}`}>
-                            <Phone className="w-5 h-5" />
+                        <button className={`p-2 rounded-full transition-colors hover:bg-button-primary/50`}>
+                            <Phone className="w-5 h-5 text-text-tertiary" />
                         </button>
-                        <button className={`p-2 rounded-full transition-colors ${theme.hover} ${theme.textSubmain}`}>
-                            <Video className="w-5 h-5" />
+                        <button className={`p-2 rounded-full transition-colors hover:bg-button-primary/50`}>
+                            <Video className="w-5 h-5 text-text-tertiary" />
                         </button>
-                        <button className={`p-2 rounded-full transition-colors ${theme.hover} ${theme.textSubmain}`}>
-                            <MoreVertical className="w-5 h-5" />
+                        <button className={`p-2 rounded-full transition-colors hover:bg-button-primary/50`}>
+                            <MoreVertical className="w-5 h-5 text-text-tertiary" />
                         </button>
                     </div>
                 </div>
@@ -167,15 +167,15 @@ const Inbox = () => {
                         >
                             <div
                                 className={clsx(
-                                    "p-3 rounded-2xl text-sm shadow-sm",
+                                    "p-3 rounded-2xl text-sm shadow-sm border border-text-primary/10 bg-tertiary text-text-tertiary",
                                     msg.sender === 'me'
-                                        ? "bg-primary-green text-white rounded-br-none"
-                                        : `border rounded-bl-none ${theme.main} ${theme.textMain} ${theme.border}`
+                                        ? "rounded-br-none"
+                                        : "rounded-bl-none"
                                 )}
                             >
                                 {msg.text}
                             </div>
-                            <span className={`text-[9px] mt-1 ${theme.textSubmain}`}>
+                            <span className={`text-[9px] mt-1 text-text-tertiary`}>
                                 {msg.fecha} \ {msg.hora}
                             </span>
                         </div>
@@ -183,7 +183,7 @@ const Inbox = () => {
                 </div>
 
                 {/* Input Area */}
-                <div className={`p-4 border-t ${theme.subMain} ${theme.border}`}>
+                <div className="p-4 border-t border-text-primary/10 bg-primary">
                     <form onSubmit={handleSendMessage} className="flex items-center gap-2">
                         <button type="button" className={`p-2 rounded-full cursor-pointer transition-colors ${theme.hover} ${theme.textSubmain}`}>
                             <Paperclip className="w-5 h-5" />
@@ -191,7 +191,7 @@ const Inbox = () => {
                         <input
                             type="text"
                             placeholder="Escribe un mensaje..."
-                            className={`flex-1 px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-primary-green/50 transition-colors ${theme.input}`}
+                            className="flex-1 px-4 py-2 border border-text-primary/10 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-green/50 transition-colors bg-tertiary text-text-tertiary"
                             value={newMessage}
                             onChange={(e) => setNewMessage(e.target.value)}
                         />
@@ -200,7 +200,7 @@ const Inbox = () => {
                             className={clsx(
                                 "p-2 rounded-full transition-colors",
                                 newMessage.trim()
-                                    ? "bg-primary-green text-white hover:bg-primary-green/90 shadow-sm"
+                                    ? "bg-button-primary text-text-primary hover:bg-button-primary/60 shadow-sm"
                                     : `cursor-not-allowed border ${theme.main} ${theme.textSubmain} ${theme.border}`
                             )}
                             disabled={!newMessage.trim()}

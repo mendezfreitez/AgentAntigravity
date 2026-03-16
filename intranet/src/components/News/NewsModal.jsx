@@ -13,7 +13,7 @@ const NewsModal = ({ isOpen, onClose, article }) => {
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
             <div
-                className={`border rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-200 ${theme.subMain} ${theme.border}`}
+                className="bg-secondary rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-200 border border-text-primary/10"
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="relative h-64 md:h-80">
@@ -40,27 +40,27 @@ const NewsModal = ({ isOpen, onClose, article }) => {
                 </div>
 
                 <div className="p-6 md:p-8">
-                    <div className={`flex flex-wrap items-center gap-6 text-sm mb-8 border-b pb-6 ${theme.textSubmain} ${theme.border}`}>
+                    <div className="flex flex-wrap items-center gap-6 text-sm mb-5 border-b pb-3">
                         <div className="flex items-center">
                             <User className="w-4 h-4 mr-2 text-primary-green" />
-                            <span className={`font-medium ${theme.textMain}`}>{article.author}</span>
+                            <span className="font-medium text-text-secondary">{article.author}</span>
                         </div>
                         <div className="flex items-center">
                             <Calendar className="w-4 h-4 mr-2 text-primary-green" />
-                            <span>{article.date}</span>
+                            <span className="text-text-secondary">{article.date}</span>
                         </div>
                         <div className="flex items-center">
                             <Tag className="w-4 h-4 mr-2 text-primary-green" />
-                            <span>{article.category}</span>
+                            <span className="text-text-secondary">{article.category}</span>
                         </div>
                     </div>
 
                     <div className={`prose prose-lg max-w-none ${theme.textMain}`}>
-                        <p className={`text-lg leading-relaxed mb-6 ${theme.textSubmain}`}>
+                        <p className="text-xl leading-relaxed mb-5 text-text-primary">
                             {article.excerpt}
                         </p>
                         {article.content ? (
-                            <div className="whitespace-pre-wrap">{article.content}</div>
+                            <div className="whitespace-pre-wrap text-text-tertiary">{article.content}</div>
                         ) : (
                             <>
                                 <p className="mb-4">
