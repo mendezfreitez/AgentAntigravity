@@ -16,12 +16,12 @@ const QuickActions = () => {
                 {actions.map((action, index) => (
                     <button
                         key={index}
-                        className={`flex flex-col cursor-pointer rounded-2xl items-center justify-center p-4 transition-colors border border-text-primary/10 text-text-primary bg-tertiary/10 hover:bg-tertiary`}
+                        className="flex flex-col cursor-pointer rounded-2xl items-center justify-center p-4 transition-colors border border-text-primary/10 text-text-primary bg-tertiary/10 hover:bg-tertiary"
                     >
-                        <div className={`p-3 rounded-full mb-3  text-text-primary bg-button-primary/70`}>
+                        <div className="p-3 rounded-full mb-3  text-text-primary bg-button-primary/70">
                             <action.icon className="w-6 h-6" />
                         </div>
-                        <span className={`text-sm font-medium`}>{action.label}</span>
+                        <span className="text-sm font-medium">{action.label}</span>
                     </button>
                 ))}
             </div>

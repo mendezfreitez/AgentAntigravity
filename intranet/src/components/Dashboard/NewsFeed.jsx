@@ -1,13 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import NewsModal from '../News/NewsModal';
-import { ThemeContext } from '../../context/ThemeContext';
 
 const NewsFeed = () => {
     const [selectedArticle, setSelectedArticle] = React.useState(null);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
-    const { theme } = useContext(ThemeContext);
 
     const news = [
         {

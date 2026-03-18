@@ -207,9 +207,9 @@ const Directory = () => {
       {/* Message Modal */}
       {isMessageModalOpen && selectedEmployee && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className={`border rounded-xl shadow-xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in duration-200 ${theme.subMain} ${theme.border}`}>
-            <div className={`p-4 border-b flex justify-between items-center ${theme.border} ${theme.main}`}>
-              <h3 className={`text-lg font-bold ${theme.textMain}`}>Nuevo Mensaje para {selectedEmployee.name}</h3>
+          <div className="border rounded-xl shadow-xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in duration-200">
+            <div className="p-4 border-b border-text-primary/10 bg-primary flex justify-between items-center">
+              <h3 className="text-lg font-bold text-text-primary">Nuevo Mensaje para {selectedEmployee.name}</h3>
               <button
                 onClick={handleCloseMessageModal}
                 className="text-gray-400 hover:text-gray-500 transition-colors p-1 hover:bg-gray-100 rounded-full cursor-pointer"
@@ -218,24 +218,24 @@ const Directory = () => {
               </button>
             </div>
 
-            <div className="p-6 space-y-4">
+            <div className="p-6 space-y-4 bg-secondary">
               <div>
-                <label className={`block text-sm font-medium mb-1 ${theme.textMain}`}>Asunto</label>
+                <label className="block text-sm font-medium mb-1 text-text-secondary">Asunto</label>
                 <input
                   type="text"
                   placeholder="Ej: Consulta sobre proyecto"
-                  className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green/50 ${theme.input}`}
+                  className="w-full ps-3 py-2 rounded-lg focus:outline-none focus:ring-0 transition-colors bg-tertiary border border-text-primary/10 text-text-tertiary"
                   value={messageData.subject}
                   onChange={(e) => setMessageData({ ...messageData, subject: e.target.value })}
                 />
               </div>
 
               <div>
-                <label className={`block text-sm font-medium mb-1 ${theme.textMain}`}>Descripción</label>
+                <label className="block text-sm font-medium mb-1 text-text-secondary">Descripción</label>
                 <textarea
                   rows="4"
                   placeholder="Escribe tu mensaje aquí..."
-                  className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green/50 resize-none ${theme.input}`}
+                  className="w-full ps-3 py-2 rounded-lg focus:outline-none focus:ring-0 transition-colors bg-tertiary border border-text-primary/10 text-text-tertiary"
                   value={messageData.description}
                   onChange={(e) => setMessageData({ ...messageData, description: e.target.value })}
                 />
@@ -243,11 +243,11 @@ const Directory = () => {
 
               {/* Drag and Drop Area */}
               <div>
-                <label className={`block text-sm font-medium mb-1 ${theme.textMain}`}>Adjuntar Archivos</label>
+                <label className="block text-sm font-medium mb-1 text-text-secondary">Adjuntar Archivos</label>
                 <div
                   className={clsx(
                     "border-2 border-dashed rounded-lg p-6 text-center transition-colors cursor-pointer",
-                    isDragging ? "border-primary-green bg-primary-green/5" : `hover:border-primary-green/50 ${theme.subMain} ${theme.border}`
+                    isDragging ? "border-primary-green bg-primary-green/5" : `hover:border-primary-green/50 bg-tertiary`
                   )}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
@@ -271,10 +271,10 @@ const Directory = () => {
                 {messageData.files.length > 0 && (
                   <div className="mt-3 space-y-2">
                     {messageData.files.map((file, index) => (
-                      <div key={index} className={`flex items-center justify-between p-2 rounded-lg border ${theme.main} ${theme.border}`}>
+                      <div key={index} className="flex items-center justify-between p-2 rounded-lg border bg-tertiary">
                         <div className="flex items-center truncate">
-                          <Paperclip className={`w-4 h-4 mr-2 flex-shrink-0 ${theme.textSubmain}`} />
-                          <span className={`text-sm truncate ${theme.textMain}`}>{file.name}</span>
+                          <Paperclip className="w-4 h-4 mr-2 text-text-secondary" />
+                          <span className="text-sm truncate text-text-tertiary/80">{file.name}</span>
                         </div>
                         <button
                           onClick={(e) => { e.stopPropagation(); removeFile(index); }}
@@ -289,16 +289,16 @@ const Directory = () => {
               </div>
             </div>
 
-            <div className={`p-4 border-t flex gap-3 ${theme.main} ${theme.border}`}>
+            <div className="p-4 border-t flex gap-3 bg-primary">
               <button
                 onClick={handleCloseMessageModal}
-                className={`flex-1 py-2 font-medium border hover:brightness-95 rounded-lg transition-colors ${theme.textMain} ${theme.subMain} ${theme.border}`}
+                className="flex-1 py-2 font-medium border hover:brightness-95 rounded-lg transition-colors text-text-secondary bg-tertiary border-text-primary/10"
               >
                 Cancelar
               </button>
               <button
                 onClick={handleSendMessage}
-                className="flex-1 bg-primary-green text-white py-2 rounded-lg font-medium hover:bg-primary-green/90 transition-colors"
+                className="flex-1 py-2 text-sm font-medium cursor-pointer rounded-lg text-text-primary bg-button-primary/70 border border-primary-green/30 hover:bg-button-primary/80 transition-colors"
               >
                 Enviar
               </button>

@@ -19,16 +19,16 @@ const NotificationsModal = ({ isOpen, onClose }) => {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-in fade-in duration-300">
-            <div className={`bg-white rounded-xl shadow-2xl w-full max-w-md transform scale-100 transition-all overflow-hidden ${theme.subMain2}`}>
-                <div className="p-6">
+            <div className="bg-primary rounded-2xl shadow-2xl w-full max-w-md transform scale-100 transition-all overflow-hidden">
+                <div className="p-6 bg-primary">
                     <div className="flex justify-between items-center mb-6">
                         <div className="flex items-center gap-3">
-                            <div className="p-3 bg-blue-50 text-blue-600 rounded-full">
-                                <CheckCircle className="w-6 h-6" />
+                            <div className="p-3 bg-button-primary/50 rounded-full">
+                                <CheckCircle className="w-6 h-6 text-text-primary" />
                             </div>
                             <div>
-                                <h3 className={`text-xl font-bold ${theme.txtWhite}`}>Resumen Diario</h3>
-                                <p className="text-sm text-gray-500 dark:text-gray-400">Tienes 3 tareas pendientes hoy</p>
+                                <h3 className="text-xl font-bold text-text-primary">Resumen Diario</h3>
+                                <p className="text-sm text-text-tertiary">Tienes 3 tareas pendientes hoy</p>
                             </div>
                         </div>
                         <button
@@ -41,12 +41,12 @@ const NotificationsModal = ({ isOpen, onClose }) => {
 
                     <div className="space-y-3 mb-8">
                         {pendingTasks.map(task => (
-                            <div key={task.id} className={`${theme.hover} flex items-center cursor-pointer justify-between p-4  transition-colors rounded-xl border border-gray-100 shadow-sm group`}>
+                            <div key={task.id} className="bg-secondary flex items-center cursor-pointer justify-between p-4 transition-colors rounded-xl border border-text-primary/10 shadow-sm group hover:bg-tertiary">
                                 <div className="flex items-center gap-3">
                                     <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                                    <span className={`font-medium transition-colors ${theme.txtWhite}`}>{task.text}</span>
+                                    <span className="font-medium transition-colors text-text-secondary">{task.text}</span>
                                 </div>
-                                <span className={`text-xs font-semibold bg-gray-50 px-2 py-1 rounded-md border border-gray-100 ${theme.txtWhite}`}>{task.time}</span>
+                                <span className="text-xs font-semibold bg-tertiary px-2 py-1 rounded-md border border-text-primary/10 text-text-tertiary">{task.time}</span>
                             </div>
                         ))}
                     </div>
@@ -57,9 +57,9 @@ const NotificationsModal = ({ isOpen, onClose }) => {
                     >
                         Entendido, gracias
                     </button>
-                </div>
-            </div>
-        </div>
+                </div >
+            </div >
+        </div >
     );
 };
 

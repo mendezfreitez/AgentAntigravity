@@ -1,10 +1,7 @@
-import React, { useContext } from 'react';
 import { X, Calendar, User, Tag } from 'lucide-react';
-import { ThemeContext } from '../../context/ThemeContext';
 import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 const NewsModal = ({ isOpen, onClose, article }) => {
-    const { theme } = useContext(ThemeContext);
 
     useEscapeKey(onClose, isOpen && !!article);
 
@@ -25,7 +22,7 @@ const NewsModal = ({ isOpen, onClose, article }) => {
                     <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 p-2 bg-black/20 hover:bg-black/40 text-white rounded-full backdrop-blur-md transition-colors"
+                        className="absolute top-4 right-4 p-2 bg-primary/30 hover:bg-primary/60 text-white rounded-full backdrop-blur-md transition-colors"
                     >
                         <X className="w-6 h-6" />
                     </button>
@@ -55,7 +52,7 @@ const NewsModal = ({ isOpen, onClose, article }) => {
                         </div>
                     </div>
 
-                    <div className={`prose prose-lg max-w-none ${theme.textMain}`}>
+                    <div className="prose prose-lg max-w-none">
                         <p className="text-xl leading-relaxed mb-5 text-text-primary">
                             {article.excerpt}
                         </p>
