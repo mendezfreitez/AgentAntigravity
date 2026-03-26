@@ -20,6 +20,7 @@ import { ChevronLeft, ChevronRight, Plus, X, Clock, AlignLeft, AlertCircle, Penc
 import { useLocation } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
 import { useEscapeKey } from '../hooks/useEscapeKey';
+import { INPUT_CLASS } from '../assets/const';
 import clsx from 'clsx';
 
 const Events = () => {
@@ -272,30 +273,30 @@ const Events = () => {
             {/* Day Details Modal */}
             {isDetailsModalOpen && selectedDate && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-                    <div className={`border rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-200 ${theme.subMain} ${theme.border}`}>
-                        <div className={`p-4 border-b flex justify-between items-center ${theme.main} ${theme.border}`}>
-                            <h3 className={`text-lg font-bold capitalize ${theme.textMain}`}>
+                    <div className="border border-text-primary/10 rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-200">
+                        <div className="p-4 border-b border-text-primary/10 flex justify-between items-center bg-primary">
+                            <h3 className="text-lg font-bold capitalize text-text-primary">
                                 {format(addDays(selectedDate, 1), 'EEEE, d MMMM', { locale: es })}
                             </h3>
                             <button
                                 onClick={() => setIsDetailsModalOpen(false)}
                                 className="text-gray-400 hover:text-gray-500 transition-colors p-1 hover:bg-gray-100 rounded-full cursor-pointer"
                             >
-                                <X className={`w-5 h-5 ${theme.textMain}`} />
+                                <X className="w-5 h-5" />
                             </button>
                         </div>
 
-                        <div className="p-4 max-h-[60vh] overflow-y-auto">
+                        <div className="p-4 max-h-[60vh] overflow-y-auto bg-secondary">
                             {getEventsForDay(selectedDate).length > 0 ? (
                                 <div className="space-y-3">
                                     {getEventsForDay(selectedDate).map(event => (
                                         <div
                                             key={event.id}
-                                            className={`p-3 rounded-lg border transition-colors relative group ${theme.border} ${theme.subMain} ${theme.hover}`}
+                                            className={`p-3 rounded-lg border transition-colors relative group border-text-primary/10 bg-tertiary`}
                                             style={{ borderLeft: `4px solid ${priorities[event.priority]?.color || priorities.Baja.color}` }}
                                         >
                                             <div className="flex justify-between items-start mb-1">
-                                                <h4 className={`font-bold ${theme.textMain}`}>{event.title}</h4>
+                                                <h4 className="font-bold text-text-primary">{event.title}</h4>
                                                 <div className="flex items-center gap-2">
                                                     <span
                                                         data-theme="dark"
@@ -309,10 +310,10 @@ const Events = () => {
                                                     </span>
                                                 </div>
                                             </div>
-                                            <p className={`text-sm mb-2 ${theme.textSubmain}`}>{event.description}</p>
+                                            <p className="text-sm mb-2 text-text-secondary">{event.description}</p>
 
                                             {/* Edit/Delete Buttons */}
-                                            <div className={`flex justify-end gap-2 mt-2 pt-2 border-t ${theme.border}`}>
+                                            <div className={`flex justify-end gap-2 mt-2 pt-2 border-t border-text-primary/10`}>
                                                 <button
                                                     onClick={() => handleEditEventClick(event)}
                                                     className="p-1.5 text-green-500 hover:bg-green-500/10 rounded-md transition-colors"
@@ -332,13 +333,13 @@ const Events = () => {
                                     ))}
                                 </div>
                             ) : (
-                                <div className={`text-center py-8 ${theme.textSubmain}`}>
+                                <div className="text-center py-8 text-text-tertiary">
                                     <p>No hay eventos programados para este día.</p>
                                 </div>
                             )}
                         </div>
 
-                        <div className={`p-4 border-t ${theme.main} ${theme.border}`}>
+                        <div className="p-4 border-t border-text-primary/10 bg-primary">
                             <button
                                 onClick={handleAddEventClick}
                                 className="w-full bg-primary-green text-white py-2 rounded-lg font-medium hover:bg-primary-green/90 transition-colors flex items-center justify-center"
@@ -348,130 +349,134 @@ const Events = () => {
                             </button>
                         </div>
                     </div>
-                </div>
+                </div >
             )}
 
             {/* Add/Edit Event Modal (Nested) */}
-            {isAddEventModalOpen && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 backdrop-blur-[1px] p-4">
-                    <div className={`rounded-xl shadow-2xl w-full max-w-sm overflow-hidden animate-in fade-in zoom-in duration-200 border ${theme.subMain} ${theme.border}`}>
-                        <div className={`p-4 border-b flex justify-between items-center ${theme.main} ${theme.border}`}>
-                            <h3 className={`text-lg font-bold ${theme.textMain}`}>{editingEventId ? 'Editar Evento' : 'Nuevo Evento'}</h3>
-                            <button
-                                onClick={() => setIsAddEventModalOpen(false)}
-                                className={`p-1 rounded-full transition-colors ${theme.hover}`}
-                            >
-                                <X className={`w-5 h-5 ${theme.textSubmain}`} />
-                            </button>
-                        </div>
+            {
+                isAddEventModalOpen && (
+                    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 backdrop-blur-[1px] p-4">
+                        <div className="rounded-xl shadow-2xl w-full max-w-sm overflow-hidden animate-in fade-in zoom-in duration-200 border border-text-primary/10 bg-primary">
+                            <div className="bg-primary p-4 border-b flex justify-between items-center">
+                                <h3 className="text-lg font-bold text-text-primary">{editingEventId ? 'Editar Evento' : 'Nuevo Evento'}</h3>
+                                <button
+                                    onClick={() => setIsAddEventModalOpen(false)}
+                                    className={`p-1 rounded-full transition-colors ${theme.hover}`}
+                                >
+                                    <X className={`w-5 h-5 ${theme.textSubmain}`} />
+                                </button>
+                            </div>
 
-                        <div className="p-4 space-y-4">
-                            <div>
-                                <label className={`block text-sm font-medium mb-1 ${theme.textMain}`}>Hora</label>
-                                <div className="relative">
-                                    <Clock className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${theme.textSubmain}`} />
+                            <div className="p-4 space-y-4 bg-secondary">
+                                <div>
+                                    <label className="block text-sm font-medium mb-1 text-text-secondary">Hora</label>
+                                    <div className="relative">
+                                        <Clock className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${theme.textSubmain}`} />
+                                        <input
+                                            type="time"
+                                            className={`${INPUT_CLASS} pl-9`}
+                                            value={newEvent.time}
+                                            onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium mb-1 text-text-secondary">Título</label>
                                     <input
-                                        type="time"
-                                        className={`w-full pl-9 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green/50 ${theme.input}`}
-                                        value={newEvent.time}
-                                        onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
-                                    />
-                                </div>
-                            </div>
-
-                            <div>
-                                <label className={`block text-sm font-medium mb-1 ${theme.textMain}`}>Título</label>
-                                <input
-                                    type="text"
-                                    placeholder=""
-                                    className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green/50 ${theme.input}`}
-                                    value={newEvent.title}
-                                    onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
-                                />
-                            </div>
-
-                            <div>
-                                <label className={`block text-sm font-medium mb-1 ${theme.textMain}`}>Prioridad</label>
-                                <div className="relative">
-                                    <AlertCircle className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${theme.textSubmain}`} />
-                                    <select
-                                        className={`w-full pl-9 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green/50 appearance-none cursor-pointer ${theme.input}`}
-                                        value={newEvent.priority}
-                                        onChange={(e) => setNewEvent({ ...newEvent, priority: e.target.value })}
-                                    >
-                                        <option value="">Seleccionar</option>
-                                        {Object.values(priorities).map((priority) => (
-                                            <option key={priority.value} value={priority.value}>
-                                                {priority.label}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div>
-                                <label className={`block text-sm font-medium mb-1 ${theme.textMain}`}>Descripción</label>
-                                <div className="relative">
-                                    <AlignLeft className={`absolute left-3 top-3 w-4 h-4 ${theme.textSubmain}`} />
-                                    <textarea
-                                        rows="3"
+                                        type="text"
                                         placeholder=""
-                                        className={`w-full pl-9 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green/50 resize-none ${theme.input}`}
-                                        value={newEvent.description}
-                                        onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })}
+                                        className={INPUT_CLASS}
+                                        value={newEvent.title}
+                                        onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
                                     />
                                 </div>
-                            </div>
-                        </div>
 
-                        <div className={`p-4 border-t flex gap-3 ${theme.main} ${theme.border}`}>
-                            <button
-                                onClick={() => setIsAddEventModalOpen(false)}
-                                className={`flex-1 py-2 font-medium bg-transparent border hover:brightness-95 rounded-lg transition-colors ${theme.textMain} ${theme.border}`}
-                            >
-                                Cancelar
-                            </button>
-                            <button
-                                onClick={handleSaveEvent}
-                                className="flex-1 bg-primary-green text-white py-2 rounded-lg font-medium hover:bg-primary-green/90 transition-colors"
-                            >
-                                Guardar
-                            </button>
+                                <div>
+                                    <label className="block text-sm font-medium mb-1 text-text-secondary">Prioridad</label>
+                                    <div className="relative">
+                                        <AlertCircle className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${theme.textSubmain}`} />
+                                        <select
+                                            className={`${INPUT_CLASS} pl-9`}
+                                            value={newEvent.priority}
+                                            onChange={(e) => setNewEvent({ ...newEvent, priority: e.target.value })}
+                                        >
+                                            <option value="">Seleccionar</option>
+                                            {Object.values(priorities).map((priority) => (
+                                                <option key={priority.value} value={priority.value}>
+                                                    {priority.label}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium mb-1 text-text-secondary">Descripción</label>
+                                    <div className="relative">
+                                        <AlignLeft className={`absolute left-3 top-3 w-4 h-4 ${theme.textSubmain}`} />
+                                        <textarea
+                                            rows="3"
+                                            placeholder=""
+                                            className={`${INPUT_CLASS} pl-9`}
+                                            value={newEvent.description}
+                                            onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="p-4 border-t flex gap-3 bg-tertiary">
+                                <button
+                                    onClick={() => setIsAddEventModalOpen(false)}
+                                    className="flex-1 py-2 text-sm font-medium cursor-pointer rounded-lg hover:bg-secondary/10 transition-colors border border-text-primary/10 bg-secondary text-text-tertiary"
+                                >
+                                    Cancelar
+                                </button>
+                                <button
+                                    onClick={handleSaveEvent}
+                                    className="flex-1 py-2 text-sm font-medium cursor-pointer rounded-lg text-text-primary bg-button-primary/70 border border-primary-green/30 hover:bg-button-primary/80 transition-colors"
+                                >
+                                    Guardar
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )
+            }
 
             {/* Delete Confirmation Modal */}
-            {isDeleteModalOpen && (
-                <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/50 backdrop-blur-[1px] p-4">
-                    <div className={`rounded-xl shadow-2xl w-full max-w-sm overflow-hidden animate-in fade-in zoom-in duration-200 border ${theme.subMain} ${theme.border}`}>
-                        <div className="p-6 text-center">
-                            <div className="w-12 h-12 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <AlertTriangle className="w-6 h-6 text-red-500" />
+            {
+                isDeleteModalOpen && (
+                    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/50 backdrop-blur-[1px] p-4">
+                        <div className="rounded-xl shadow-2xl w-full max-w-sm overflow-hidden animate-in fade-in zoom-in duration-200 border border-text-primary/10 bg-primary">
+                            <div className="p-6 text-center bg-secondary">
+                                <div className="w-12 h-12 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <AlertTriangle className="w-6 h-6 text-red-500" />
+                                </div>
+                                <h3 className="text-lg font-bold mb-2 text-text-primary">¿Desea eliminar este evento?</h3>
+                                <p className="text-sm text-text-secondary">Esta acción no se puede deshacer.</p>
                             </div>
-                            <h3 className={`text-lg font-bold mb-2 ${theme.textMain}`}>¿Desea eliminar este evento?</h3>
-                            <p className={`text-sm ${theme.textSubmain}`}>Esta acción no se puede deshacer.</p>
-                        </div>
 
-                        <div className={`p-4 border-t flex gap-3 ${theme.main} ${theme.border}`}>
-                            <button
-                                onClick={() => setIsDeleteModalOpen(false)}
-                                className={`flex-1 py-2 font-medium bg-transparent hover:brightness-95 rounded-lg transition-colors border ${theme.textMain} ${theme.border}`}
-                            >
-                                No
-                            </button>
-                            <button
-                                onClick={confirmDeleteEvent}
-                                className="flex-1 bg-red-600 text-white py-2 rounded-lg font-medium hover:bg-red-700 transition-colors"
-                            >
-                                Sí, eliminar
-                            </button>
+                            <div className="p-4 border-t border-text-primary/10 flex gap-3 bg-primary">
+                                <button
+                                    onClick={() => setIsDeleteModalOpen(false)}
+                                    className="flex-1 py-2 font-medium bg-transparent hover:brightness-95 rounded-lg transition-colors border border-text-primary/10 text-text-tertiary cursor-pointer"
+                                >
+                                    No
+                                </button>
+                                <button
+                                    onClick={confirmDeleteEvent}
+                                    className="flex-1 bg-red-600 text-white py-2 rounded-lg font-medium hover:bg-red-700 transition-colors cursor-pointer"
+                                >
+                                    Sí, eliminar
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )
+            }
+        </div >
     );
 };
 

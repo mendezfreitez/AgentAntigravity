@@ -1,0 +1,1 @@
+export const INPUT_CLASS = "w-full pl-4 pr-4 py-2 rounded-lg focus:outline-none focus:ring-0 transition-colors bg-tertiary border border-text-primary/10 text-text-tertiary";

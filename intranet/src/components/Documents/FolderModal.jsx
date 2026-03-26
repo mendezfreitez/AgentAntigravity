@@ -19,14 +19,14 @@ const FolderModal = ({ folder, onClose }) => {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-            <div className={`bg-white rounded-xl shadow-xl w-full max-w-2xl transform scale-100 ${theme.subMain2} flex flex-col max-h-[80vh]`}>
+            <div className={`bg-primary rounded-2xl shadow-xl w-full max-w-2xl transform scale-100 flex flex-col max-h-[80vh]`}>
                 {/* Header */}
-                <div className="flex justify-between items-center p-6 border-b border-gray-100">
+                <div className="flex justify-between items-center p-6 border-b bg-primary rounded-t-2xl">
                     <div>
-                        <h3 className={`text-xl font-bold flex items-center gap-2 text-gray-900 ${theme.txtWhite}`}>
+                        <h3 className="text-xl font-bold flex items-center gap-2 text-text-primary">
                             <span className="text-yellow-400">📁</span> {folder.name}
                         </h3>
-                        <p className="text-sm text-gray-500 mt-1">{folder.items} elementos</p>
+                        <p className="text-sm mt-1 text-text-tertiary">{folder.items} elementos</p>
                     </div>
                     <button
                         onClick={onClose}
@@ -37,20 +37,20 @@ const FolderModal = ({ folder, onClose }) => {
                 </div>
 
                 {/* Body - File List */}
-                <div className="flex-1 overflow-y-auto p-6">
+                <div className="flex-1 overflow-y-auto p-6 bg-secondary">
                     <div className="space-y-2">
                         {folderFiles.map((file) => (
-                            <div key={file.id} className={`flex items-center justify-between p-4 bg-white hover:bg-gray-50 rounded-lg border border-gray-100 dark:border-gray-700 hover:border-blue-200 transition-colors group shadow-sm`}>
+                            <div key={file.id} className={`flex items-center justify-between p-4  transition-colors border border-text-primary/10 text-text-primary bg-tertiary/10 hover:bg-tertiary rounded-lg group shadow-sm`}>
                                 <div className="flex items-center gap-4">
-                                    <div className="p-2 bg-blue-50 dark:bg-gray-700 rounded-lg">
-                                        <FileText className="w-6 h-6 text-blue-500" />
+                                    <div className="p-2 bg-button-primary/50 rounded-lg">
+                                        <FileText className="w-6 h-6 text-text-primary" />
                                     </div>
                                     <div>
-                                        <h4 className={`font-medium text-gray-900 cursor-pointer group-hover:text-blue-600 transition-colors ${theme.txtWhite}`}>{file.name}xxx</h4>
-                                        <p className="text-xs text-gray-500">{file.size} • {file.updated}</p>
+                                        <h4 className={`font-medium text-text-primary cursor-pointer group-hover:text-primary-green transition-colors ${theme.txtWhite}`}>{file.name}xxx</h4>
+                                        <p className="text-xs text-text-tertiary">{file.size} • {file.updated}</p>
                                     </div>
                                 </div>
-                                <button className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors">
+                                <button className="p-2 text-text-primary hover:bg-button-primary/70 rounded-full transition-colors">
                                     <Download className="w-5 h-5" />
                                 </button>
                             </div>
@@ -59,8 +59,8 @@ const FolderModal = ({ folder, onClose }) => {
                 </div>
 
                 {/* Footer / Action */}
-                <div className="p-6 border-t border-gray-100 bg-gray-50 rounded-b-xl flex justify-end">
-                    <button className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600 transition-colors shadow-sm">
+                <div className="p-6 border-t border-text-primary/10 bg-tertiary rounded-b-xl flex justify-end">
+                    <button className="flex items-center gap-2 px-4 py-2 bg-button-primary text-white rounded-lg hover:bg-green-600 transition-colors shadow-sm">
                         <Plus className="w-5 h-5" />
                         <span>Agregar archivo</span>
                     </button>

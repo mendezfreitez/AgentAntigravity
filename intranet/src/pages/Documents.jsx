@@ -55,7 +55,7 @@ const Documents = () => {
                         <div
                             key={folder.id}
                             onClick={() => setSelectedFolder(folder)}
-                            className="p-4 border rounded-2xl cursor-pointer transition-all group bg-tertiary border-text-primary/10"
+                            className="p-4 border rounded-2xl cursor-pointer transition-all group bg-tertiary border-text-primary/10 hover:bg-tertiary/50"
                         >
                             <Folder className="w-8 h-8 text-yellow-400 mb-3 group-hover:scale-110 transition-transform" />
                             <h4 className={`font-medium text-text-primary`}>{folder.name}</h4>
@@ -78,7 +78,7 @@ const Documents = () => {
                         </thead>
                         <tbody>
                             {files.map((file) => (
-                                <tr key={file.id} className={`border-b border-text-primary/40 transition-colors cursor-pointer group`}>
+                                <tr key={file.id} className="border-b border-text-primary/40 transition-colors cursor-pointer group hover:bg-tertiary/50">
                                     <td className="py-2 pl-2 items-center">
                                         <div className='flex flex-row'>
                                             <FileText className="w-5 h-5 mr-3 text-text-tertiary" />

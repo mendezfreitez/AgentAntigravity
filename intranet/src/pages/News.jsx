@@ -79,7 +79,7 @@ const News = () => {
                     </button>
                     <div className="flex gap-2">
                         {['Todos', 'Compañía', 'RRHH', 'Negocios', 'Tecnología'].map(tag => (
-                            <button key={tag} className={`px-3 py-1 text-sm font-medium rounded-full border transition-colors ${theme.subMain} ${theme.border} ${theme.textSubmain} hover:border-primary-green hover:text-primary-green`}>
+                            <button key={tag} className="px-3 py-1 text-sm font-medium rounded-full border transition-colors hover:border-primary-green hover:text-primary-green text-text-primary border-text-primary/10 bg-tertiary">
                                 {tag}
                             </button>
                         ))}
@@ -129,7 +129,7 @@ const News = () => {
                     <div
                         key={article.id}
                         onClick={() => handleArticleClick(article)}
-                        className={`rounded-xl shadow-sm border overflow-hidden hover:shadow-md transition-all cursor-pointer group ${theme.subMain} ${theme.border}`}
+                        className="rounded-xl shadow-sm overflow-hidden hover:shadow-md cursor-pointer group transition-shadow bg-tertiary border border-text-primary/10"
                     >
                         <div className="relative h-48 overflow-hidden">
                             <img
@@ -142,13 +142,13 @@ const News = () => {
                             </span>
                         </div>
                         <div className="p-6">
-                            <h4 className={`text-lg font-bold mb-3 line-clamp-2 group-hover:text-primary-green transition-colors ${theme.textMain}`}>
+                            <h4 className="text-lg font-bold mb-3 line-clamp-2 group-hover:text-primary-green transition-colors text-text-primary">
                                 {article.title}
                             </h4>
-                            <p className={`text-sm mb-4 line-clamp-2 ${theme.textSubmain}`}>
+                            <p className="text-sm mb-4 line-clamp-2 text-text-tertiary">
                                 {article.excerpt}
                             </p>
-                            <div className={`flex items-center justify-between text-xs border-t pt-4 ${theme.textSubmain} ${theme.border}`}>
+                            <div className="flex items-center justify-between text-xs border-t pt-4 text-text-tertiary border-text-primary/10">
                                 <div className="flex items-center">
                                     <Calendar className="w-3 h-3 mr-1" />
                                     {article.date}
