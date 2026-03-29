@@ -50,7 +50,7 @@ const Header = ({ onMenuClick }) => {
                     {/* Theme Toggle Button */}
                     <button
                         onClick={toggleTheme}
-                        className={`p-2 rounded-lg transition-colors cursor-pointer ${theme.hover} ${theme.textMain}`}
+                        className="p-2 rounded-lg transition-colors cursor-pointer hover:bg-button-primary/70 text-text-primary"
                         title={isDarkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
                     >
                         {isDarkMode ? (

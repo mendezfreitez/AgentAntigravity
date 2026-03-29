@@ -1,13 +1,11 @@
-import React, { useState, useContext } from 'react';
-import { Folder, FileText, Download, ChevronRight, Upload, Search, FolderPlus, Plus } from 'lucide-react';
+import { useState } from 'react';
+import { Folder, FileText, Download, Search, FolderPlus } from 'lucide-react';
 import { TitleView } from '../components/Layout/TitleView';
 import FolderModal from '../components/Documents/FolderModal';
-import { ThemeContext } from '../context/ThemeContext';
 
 const Documents = () => {
     const [currentPath, setCurrentPath] = useState(['Documentos']);
     const [selectedFolder, setSelectedFolder] = useState(null);
-    const { theme } = useContext(ThemeContext);
 
     const folders = [
         { id: 1, name: 'Políticas RRHH', items: 12, updated: 'hace 2 días' },
@@ -39,7 +37,7 @@ const Documents = () => {
                     <div>
                     </div>
                     <div className="relative w-full sm:w-64">
-                        <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${theme.textSubmain}`} />
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-text-tertiary" />
                         <input
                             type="text"
                             placeholder="Buscar documentos..."

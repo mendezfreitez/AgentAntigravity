@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { TitleView } from '../components/Layout/TitleView';
 import {
@@ -16,11 +16,12 @@ import {
     isToday
 } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { ChevronLeft, ChevronRight, Plus, X, Clock, AlignLeft, AlertCircle, Pencil, Trash2, AlertTriangle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Plus, Clock, AlignLeft, AlertCircle, Pencil, Trash2, AlertTriangle } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
 import { useEscapeKey } from '../hooks/useEscapeKey';
 import { INPUT_CLASS } from '../assets/const';
+import { BtnCloseModal } from '../components/formComponents/btnCloseModal';
 import clsx from 'clsx';
 
 const Events = () => {
@@ -278,12 +279,7 @@ const Events = () => {
                             <h3 className="text-lg font-bold capitalize text-text-primary">
                                 {format(addDays(selectedDate, 1), 'EEEE, d MMMM', { locale: es })}
                             </h3>
-                            <button
-                                onClick={() => setIsDetailsModalOpen(false)}
-                                className="text-gray-400 hover:text-gray-500 transition-colors p-1 hover:bg-gray-100 rounded-full cursor-pointer"
-                            >
-                                <X className="w-5 h-5" />
-                            </button>
+                            <BtnCloseModal onClick={() => setIsDetailsModalOpen(false)} />
                         </div>
 
                         <div className="p-4 max-h-[60vh] overflow-y-auto bg-secondary">
@@ -359,19 +355,14 @@ const Events = () => {
                         <div className="rounded-xl shadow-2xl w-full max-w-sm overflow-hidden animate-in fade-in zoom-in duration-200 border border-text-primary/10 bg-primary">
                             <div className="bg-primary p-4 border-b flex justify-between items-center">
                                 <h3 className="text-lg font-bold text-text-primary">{editingEventId ? 'Editar Evento' : 'Nuevo Evento'}</h3>
-                                <button
-                                    onClick={() => setIsAddEventModalOpen(false)}
-                                    className={`p-1 rounded-full transition-colors ${theme.hover}`}
-                                >
-                                    <X className={`w-5 h-5 ${theme.textSubmain}`} />
-                                </button>
+                                <BtnCloseModal onClick={() => setIsAddEventModalOpen(false)} />
                             </div>
 
                             <div className="p-4 space-y-4 bg-secondary">
                                 <div>
                                     <label className="block text-sm font-medium mb-1 text-text-secondary">Hora</label>
                                     <div className="relative">
-                                        <Clock className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${theme.textSubmain}`} />
+                                        <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-text-secondary" />
                                         <input
                                             type="time"
                                             className={`${INPUT_CLASS} pl-9`}
@@ -395,7 +386,7 @@ const Events = () => {
                                 <div>
                                     <label className="block text-sm font-medium mb-1 text-text-secondary">Prioridad</label>
                                     <div className="relative">
-                                        <AlertCircle className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${theme.textSubmain}`} />
+                                        <AlertCircle className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-text-secondary" />
                                         <select
                                             className={`${INPUT_CLASS} pl-9`}
                                             value={newEvent.priority}
@@ -414,7 +405,7 @@ const Events = () => {
                                 <div>
                                     <label className="block text-sm font-medium mb-1 text-text-secondary">Descripción</label>
                                     <div className="relative">
-                                        <AlignLeft className={`absolute left-3 top-3 w-4 h-4 ${theme.textSubmain}`} />
+                                        <AlignLeft className="absolute left-3 top-3 w-4 h-4 text-text-secondary" />
                                         <textarea
                                             rows="3"
                                             placeholder=""

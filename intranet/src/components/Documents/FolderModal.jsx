@@ -1,13 +1,9 @@
-import React, { useContext } from 'react';
-import { X, FileText, Download, Plus } from 'lucide-react';
-import { ThemeContext } from '../../context/ThemeContext';
+import { BtnCloseModal } from '../formComponents/btnCloseModal';
 import { useEscapeKey } from '../../hooks/useEscapeKey';
+import { FileText, Download, Plus } from 'lucide-react';
 
 const FolderModal = ({ folder, onClose }) => {
-    const { theme } = useContext(ThemeContext);
-
     useEscapeKey(onClose, !!folder);
-
     if (!folder) return null;
 
     // Mock files for the folder
@@ -28,12 +24,7 @@ const FolderModal = ({ folder, onClose }) => {
                         </h3>
                         <p className="text-sm mt-1 text-text-tertiary">{folder.items} elementos</p>
                     </div>
-                    <button
-                        onClick={onClose}
-                        className="text-gray-400 hover:text-gray-500 transition-colors p-2 hover:bg-gray-100 rounded-full"
-                    >
-                        <X className="w-5 h-5" />
-                    </button>
+                    <BtnCloseModal onClick={onClose} />
                 </div>
 
                 {/* Body - File List */}
@@ -46,7 +37,7 @@ const FolderModal = ({ folder, onClose }) => {
                                         <FileText className="w-6 h-6 text-text-primary" />
                                     </div>
                                     <div>
-                                        <h4 className={`font-medium text-text-primary cursor-pointer group-hover:text-primary-green transition-colors ${theme.txtWhite}`}>{file.name}xxx</h4>
+                                        <h4 className="font-medium text-text-primary cursor-pointer group-hover:text-primary-green transition-colors">{file.name}xxx</h4>
                                         <p className="text-xs text-text-tertiary">{file.size} • {file.updated}</p>
                                     </div>
                                 </div>
