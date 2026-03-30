@@ -1,27 +1,16 @@
-import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
-import { TitleView } from '../components/Layout/TitleView';
-import {
-    format,
-    startOfMonth,
-    endOfMonth,
-    startOfWeek,
-    endOfWeek,
-    eachDayOfInterval,
-    isSameMonth,
-    isSameDay,
-    addMonths,
-    subMonths,
-    addDays,
-    isToday
-} from 'date-fns';
-import { es } from 'date-fns/locale';
+import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Plus, Clock, AlignLeft, AlertCircle, Pencil, Trash2, AlertTriangle } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
-import { ThemeContext } from '../context/ThemeContext';
-import { useEscapeKey } from '../hooks/useEscapeKey';
-import { INPUT_CLASS } from '../assets/const';
+import {
+    format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval,
+    isSameMonth, isSameDay, addMonths, subMonths, addDays, isToday
+} from 'date-fns';
 import { BtnCloseModal } from '../components/formComponents/btnCloseModal';
+import { TitleView } from '../components/Layout/TitleView';
+import { useEscapeKey } from '../hooks/useEscapeKey';
+import { useLocation } from 'react-router-dom';
+import { INPUT_CLASS } from '../assets/const';
+import { es } from 'date-fns/locale';
+import axios from 'axios';
 import clsx from 'clsx';
 
 const Events = () => {
@@ -33,7 +22,6 @@ const Events = () => {
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [eventToDelete, setEventToDelete] = useState(null);
     const [editingEventId, setEditingEventId] = useState(null);
-    const { theme } = useContext(ThemeContext);
 
     const priorities = {
         "0": { color: 'var(--color-priority-low)', label: 'Baja', value: 0 },
@@ -219,7 +207,7 @@ const Events = () => {
                 </div>
 
                 {/* Days */}
-                <div className={`flex-1 grid grid-cols-7 ${theme.subMain}`}>
+                <div className={`flex-1 grid grid-cols-7 text-text-tertiary`}>
                     {calendarDays.map((day, idx) => {
                         const dayEvents = getEventsForDay(day);
                         return (
@@ -260,7 +248,7 @@ const Events = () => {
                                         </div>
                                     ))}
                                     {dayEvents.length > 3 && (
-                                        <div className={`text-xs pl-1 ${theme.textSubmain}`}>
+                                        <div className="text-xs pl-1 text-text-secondary">
                                             + {dayEvents.length - 3} más
                                         </div>
                                     )}
@@ -301,7 +289,7 @@ const Events = () => {
                                                     >
                                                         {priorities[event.priority]?.label}
                                                     </span>
-                                                    <span className={`text-xs font-medium border px-2 py-0.5 rounded-full ${theme.textSubmain} ${theme.main} ${theme.border} `}>
+                                                    <span className={`text-xs font-medium border px-2 py-0.5 rounded-full bg-primary text-text-primary border-text-primary/50`}>
                                                         {event.time.slice(0, 5)}
                                                     </span>
                                                 </div>

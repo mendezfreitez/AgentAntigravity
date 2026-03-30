@@ -100,7 +100,7 @@ const Header = ({ onMenuClick }) => {
                                     }}
                                     className={`w-full text-left px-4 py-2 text-sm flex items-center gap-2 transition-colors cursor-pointer ${theme.textMain} ${theme.hover}`}
                                 >
-                                    <Bell className={`w-4 h-4 ${theme.textSubmain}`} />
+                                    <Bell className={`w-4 h-4 text-text-primary`} />
                                     Notificaciones
                                 </button>
 
@@ -111,7 +111,7 @@ const Header = ({ onMenuClick }) => {
                                     }}
                                     className={`w-full text-left px-4 py-2 text-sm flex items-center gap-2 transition-colors cursor-pointer ${theme.textMain} ${theme.hover}`}
                                 >
-                                    <Settings className={`w-4 h-4 ${theme.textSubmain}`} />
+                                    <Settings className={`w-4 h-4 text-text-primary`} />
                                     Configuración
                                 </button>
 
@@ -122,7 +122,7 @@ const Header = ({ onMenuClick }) => {
                                         setIsLogoutModalOpen(true);
                                         setIsMenuOpen(false);
                                     }}
-                                    className={`w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-500/10 cursor-pointer flex items-center gap-2 transition-colors`}
+                                    className={`w-full text-left px-4 py-2 text-sm text-green-400 hover:bg-green-500/10 cursor-pointer flex items-center gap-2 transition-colors`}
                                 >
                                     <LogOut className="w-4 h-4" />
                                     Cerrar Sesión
