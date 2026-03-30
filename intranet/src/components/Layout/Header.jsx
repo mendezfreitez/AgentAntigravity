@@ -48,9 +48,10 @@ const Header = ({ onMenuClick }) => {
             <header className={`h-[65px] flex items-center justify-end px-4 relative z-20 transition-colors duration-200 bg-primary border-b border-border`}>
                 <div className="flex items-center space-x-2 transition-colors duration-200">
                     {/* Theme Toggle Button */}
+
                     <button
                         onClick={toggleTheme}
-                        className="p-2 rounded-lg transition-colors cursor-pointer hover:bg-button-primary/70 text-text-primary"
+                        className="p-2 rounded-lg transition-colors cursor-pointer hover:bg-text-primary hover:text-primary text-text-primary"
                         title={isDarkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
                     >
                         {isDarkMode ? (

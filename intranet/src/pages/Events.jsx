@@ -210,9 +210,9 @@ const Events = () => {
             {/* Calendar Grid */}
             <div className="flex-1 rounded-xl shadow-sm flex flex-col overflow-hidden transition-colors duration-200  border border-text-primary/10">
                 {/* Weekdays Header */}
-                <div className={`grid grid-cols-7 border-b transition-colors duration-200  border-text-primary/10`}>
+                <div className="grid grid-cols-7 border-b transition-colors duration-200  border-text-primary/10">
                     {['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'].map(day => (
-                        <div key={day} className={`py-3 text-center text-sm font-semibold uppercase tracking-wider bg-primary text-text-primary`}>
+                        <div key={day} className="py-3 text-center text-sm font-semibold uppercase tracking-wider bg-primary text-text-primary">
                             {day}
                         </div>
                     ))}
