@@ -64,10 +64,10 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: 'var(--color-bg-login)' }}>
+        <div className="min-h-screen flex items-center justify-center p-4 bg-green-500/20">
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
                 {/* Header */}
-                <div className="bg-linear-to-r from-primary from-green-400 to-green-500 p-8 text-white text-center">
+                <div className=" bg-cyan-800 p-8 text-white text-center">
                     <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
                         <LogIn className="w-10 h-10" />
                     </div>
@@ -124,7 +124,7 @@ const Login = () => {
                     {/* Botón de Acceder */}
                     <button
                         type="submit"
-                        className="w-full bg-primary_ text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center"
+                        className="w-full  text-white py-3 rounded-lg font-semibold bg-cyan-700 hover:bg-cyan-600 transition-colors shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center"
                     >
                         <LogIn className="w-5 h-5 mr-2" />
                         Acceder

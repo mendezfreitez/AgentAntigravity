@@ -15,7 +15,7 @@ const FolderModal = ({ folder, onClose }) => {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-            <div className={`bg-primary rounded-2xl shadow-xl w-full max-w-2xl transform scale-100 flex flex-col max-h-[80vh]`}>
+            <div className="bg-primary rounded-2xl shadow-xl w-full max-w-2xl transform scale-100 flex flex-col max-h-[80vh] border border-text-primary/10">
                 {/* Header */}
                 <div className="flex justify-between items-center p-6 border-b bg-primary rounded-t-2xl">
                     <div>

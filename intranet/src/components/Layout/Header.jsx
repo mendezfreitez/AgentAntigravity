@@ -149,8 +149,8 @@ const Header = ({ onMenuClick }) => {
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-in fade-in duration-200">
                     <div className={`rounded-xl shadow-xl w-full max-w-sm p-6 transform scale-100 ${theme.main} ${theme.border}`}>
                         <div className="text-center">
-                            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-500/20 mb-4">
-                                <LogOut className="h-6 w-6 text-red-500" />
+                            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-button-primary/20 mb-4">
+                                <LogOut className="h-6 w-6 text-button-primary" />
                             </div>
                             <h3 className={`text-lg font-medium mb-2 ${theme.textMain}`}>Cierre de sesión</h3>
                             <p className={`text-sm mb-6 ${theme.textSubmain}`}>
@@ -165,7 +165,7 @@ const Header = ({ onMenuClick }) => {
                                 </button>
                                 <button
                                     onClick={handleLogout}
-                                    className="px-4 py-2 text-sm cursor-pointer font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors shadow-sm"
+                                    className="px-4 py-2 text-sm cursor-pointer font-medium text-primary bg-button-primary hover:bg-button-primary/80 rounded-lg transition-colors shadow-sm"
                                 >
                                     Cerrar Sesión
                                 </button>

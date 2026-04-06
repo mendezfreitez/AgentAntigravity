@@ -47,17 +47,20 @@ const Documents = () => {
                 </div>
 
                 {/* Folders Grid */}
-                <h3 className={`text-sm font-bold uppercase mb-3 text-text-primary`}>Carpetas</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <h3 className="text-sm font-bold uppercase mb-1 text-text-primary ms-1">Carpetas</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-5">
                     {folders.map((folder) => (
                         <div
                             key={folder.id}
                             onClick={() => setSelectedFolder(folder)}
-                            className="p-4 border rounded-2xl cursor-pointer transition-all group bg-tertiary border-text-primary/10 hover:bg-tertiary/50"
+                            className="p-4 flex flex-row items-center justify-between border rounded-2xl cursor-pointer transition-all group bg-tertiary border-text-primary/10 hover:bg-tertiary/50"
                         >
-                            <Folder className="w-8 h-8 text-yellow-400 mb-3 group-hover:scale-110 transition-transform" />
-                            <h4 className={`font-medium text-text-primary`}>{folder.name}</h4>
-                            <p className={`text-xs text-text-tertiary`}>{folder.items} elementos</p>
+
+                            <Folder className="w-8 h-8 text-yellow-400 group-hover:scale-110 transition-transform" />
+                            <div className="flex flex-col justify-between items-end">
+                                <h4 className={`font-medium text-text-primary`}>{folder.name}</h4>
+                                <p className={`text-xs text-text-tertiary`}>{folder.items} elementos</p>
+                            </div>
                         </div>
                     ))}
                 </div>
